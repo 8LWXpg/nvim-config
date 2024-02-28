@@ -1,0 +1,14 @@
+{
+  "coc.nvim": { "branch": "master", "commit": "b14c1e9da0de5276d3660403e95c02f9e4000933" },
+  "lazy.nvim": { "branch": "main", "commit": "aedcd79811d491b60d0a6577a9c1701063c2a609" },
+  "neodev.nvim": { "branch": "main", "commit": "fdf6b3c58caf3ed1bfe40822d5dac340fc18c33b" },
+  "nerdcommenter": { "branch": "master", "commit": "e361a44230860d616f799a337bc58f5218ab6e9c" },
+  "nerdtree": { "branch": "master", "commit": "bdf81a086dd271571104a11f555b79e5cdff5dc5" },
+  "nvim-treesitter": { "branch": "master", "commit": "ca46eb3ac96cd96e963895004589f0c9b2a44491" },
+  "tokyonight.nvim": { "branch": "main", "commit": "610179f7f12db3d08540b6cc61434db2eaecbcff" },
+  "vim": { "branch": "master", "commit": "6495b4ff40479ec7705addb4ea800ec308026648" },
+  "vim-devicons": { "branch": "master", "commit": "71f239af28b7214eebb60d4ea5bd040291fb7e33" },
+  "vim-snippets": { "branch": "master", "commit": "9bd88e07865bd4fa982d46356c227b07de66412a" },
+  "vim-startify": { "branch": "master", "commit": "4e089dffdad46f3f5593f34362d530e8fe823dcf" },
+  "which-key.nvim": { "branch": "main", "commit": "4433e5ec9a507e5097571ed55c02ea9658fb268a" }
+}
