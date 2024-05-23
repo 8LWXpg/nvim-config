@@ -1,4 +1,3 @@
-vim.o.nocompatible = true            -- disable compatibility to old-time vi
 vim.o.showmatch = true               -- show matching 
 vim.o.ignorecase = true              -- case insensitive 
 vim.o.hlsearch = true                -- highlight search 
@@ -16,7 +15,13 @@ vim.cmd('filetype plugin on')
 vim.wo.cursorline = true             -- highlight current cursorline
 vim.o.ttyfast = true                 -- Speed up scrolling in Vim
 vim.o.swapfile = false               -- disable creating swap file
+
 vim.o.shell = 'pwsh'
+vim.o.shellcmdflag = "-c $PSStyle.OutputRendering = 'PlainText';"
+vim.o.shellredir = "-RedirectStandardOutput %s -Wait"
+vim.o.shellpipe = "2>&1 | Out-File %s; exit $LastExitCode"
+vim.o.shellquote = ""
+vim.o.shellxquote = ""
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics,

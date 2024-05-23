@@ -7,6 +7,5 @@ return {
   "scrooloose/nerdtree",
   "preservim/nerdcommenter",
   "mhinz/vim-startify",
-  "neoclide/coc.nvim",
-  "nvim-treesitter/nvim-treesitter"
+  "nvim-treesitter/nvim-treesitter",
 }
