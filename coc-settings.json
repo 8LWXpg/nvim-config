@@ -1,5 +1,6 @@
 {
 	"coc.preferences.formatOnSave": true,
-  "toml.formatter.columnWidth": 130,
-  "snippets.ultisnips.pythonPrompt": false
+	"toml.formatter.columnWidth": 130,
+	"toml.enabled": true,
+	"snippets.ultisnips.pythonPrompt": false
 }
