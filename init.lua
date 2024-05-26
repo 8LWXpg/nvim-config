@@ -1,8 +1,8 @@
-vim.o.showmatch = true               -- show matching 
-vim.o.ignorecase = true              -- case insensitive 
-vim.o.hlsearch = true                -- highlight search 
+vim.o.showmatch = true               -- show matching
+vim.o.ignorecase = true              -- case insensitive
+vim.o.hlsearch = true                -- highlight search
 vim.o.incsearch = true               -- incremental search
-vim.o.tabstop = 4                    -- number of columns occupied by a tab 
+vim.o.tabstop = 4                    -- number of columns occupied by a tab
 vim.o.softtabstop = 4                -- see multiple spaces as tabstops so <BS> does the right thing
 vim.o.shiftwidth = 4                 -- width for autoindents
 vim.o.autoindent = true              -- indent a new line the same amount as the line just typed
@@ -24,17 +24,18 @@ vim.o.shellquote = ""
 vim.o.shellxquote = ""
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics,
-  {
-    virtual_text = false,
-    signs = true,
-    update_in_insert = false,
-    underline = true,
-  }
+	vim.lsp.diagnostic.on_publish_diagnostics,
+	{
+		virtual_text = false,
+		signs = true,
+		update_in_insert = false,
+		underline = true,
+	}
 )
 
-vim.api.nvim_set_keymap('i', '<C-H>', '<C-W>', {noremap = true})
-vim.api.nvim_set_keymap('i', '<TAB>', 'pumvisible() ? coc#_select_confirm() : "\\<TAB>"', {expr = true, noremap = true, silent = true})
+vim.api.nvim_set_keymap('i', '<C-H>', '<C-W>', { noremap = true })
+vim.api.nvim_set_keymap('i', '<TAB>', 'pumvisible() ? coc#_select_confirm() : "\\<TAB>"',
+	{ expr = true, noremap = true, silent = true })
 -- vim.api.nvim_set_keymap('i', '<TAB>', [[coc#rpc#request('doKeymap', ['snippets-expand-jump',''])]], {silent = true, expr = true})
 
 require('config')
