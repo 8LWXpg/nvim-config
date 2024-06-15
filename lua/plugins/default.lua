@@ -1,5 +1,5 @@
 return {
-	'folke/which-key.nvim',
+	{ 'folke/which-key.nvim', lazy = true },
 	'folke/neodev.nvim',
 	'ryanoasis/vim-devicons',
 	'honza/vim-snippets',
