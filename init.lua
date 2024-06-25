@@ -16,12 +16,15 @@ vim.wo.cursorline = true             -- highlight current cursorline
 vim.o.ttyfast = true                 -- Speed up scrolling in Vim
 vim.o.swapfile = false               -- disable creating swap file
 
-vim.o.shell = 'pwsh'
-vim.o.shellcmdflag = "-c $PSStyle.OutputRendering = 'PlainText';"
-vim.o.shellredir = "-RedirectStandardOutput %s -Wait"
-vim.o.shellpipe = "2>&1 | Out-File %s; exit $LastExitCode"
-vim.o.shellquote = ""
-vim.o.shellxquote = ""
+if vim.loop.os_uname().sysname == 'Windows_NT' then
+	vim.opt.shell = "pwsh.exe"
+	vim.o.shellcmdflag =
+	"-NoLogo -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;"
+	vim.o.shellredir = "2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode"
+	vim.o.shellpipe = "2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode"
+	vim.o.shellquote = ""
+	vim.o.shellxquote = ""
+end
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 	vim.lsp.diagnostic.on_publish_diagnostics,

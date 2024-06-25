@@ -6,4 +6,5 @@ return {
 	'scrooloose/nerdtree',
 	'nvim-treesitter/nvim-treesitter',
 	'mhinz/vim-startify',
+	{ 'ArcaneSpecs/HexEditor.nvim', config = true },
 }
