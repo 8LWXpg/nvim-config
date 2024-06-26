@@ -1,5 +1,7 @@
 {
-	"coc.preferences.formatOnSave": true,
+	"coc.preferences.formatOnSaveFiletypes": [
+		"*"
+	],
 	"toml": {
 		"formatter.columnWidth": 130,
 		"enabled": true
