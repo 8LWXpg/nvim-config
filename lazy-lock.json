@@ -1,0 +1,13 @@
+{
+  "HexEditor.nvim": { "branch": "master", "commit": "d599941283d8aed84fe47e8592b2dfd0d0945d6d" },
+  "coc.nvim": { "branch": "master", "commit": "1d3c525e2d6af0c07ed19fa7a5016ffc6a9e8421" },
+  "lazy.nvim": { "branch": "main", "commit": "69041bccb70f68408633e93ed33012ee18889bb0" },
+  "neodev.nvim": { "branch": "main", "commit": "1f4ebcc10852518166ce165e57d425a4265a10d4" },
+  "nerdtree": { "branch": "master", "commit": "f3a4d8eaa8ac10305e3d53851c976756ea9dc8e8" },
+  "nvim-treesitter": { "branch": "master", "commit": "f197a15b0d1e8d555263af20add51450e5aaa1f0" },
+  "tokyonight.nvim": { "branch": "main", "commit": "67c6050e1ca41260c919236a098ba278472c7520" },
+  "vim-devicons": { "branch": "master", "commit": "4db2a6ddaf66afa16105b7d2a13f81a9bb5ff9fc" },
+  "vim-snippets": { "branch": "master", "commit": "4ed409154bcaa32fba6fd153cc0c915e44982872" },
+  "vim-startify": { "branch": "master", "commit": "b81dfa54b979aac27179fe0583c2b92f04c8ddad" },
+  "which-key.nvim": { "branch": "main", "commit": "0539da005b98b02cf730c1d9da82b8e8edb1c2d2" }
+}
