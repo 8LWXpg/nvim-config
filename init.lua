@@ -16,8 +16,21 @@ vim.wo.relativenumber = true
 vim.wo.cursorline = true        -- highlight current cursorline
 
 vim.opt.fileformat = "unix"     -- Set default line ending to LF
+vim.opt.fileformats = "unix,dos"
 
 vim.opt.whichwrap:append("<>hl")
+
+-- Convert CRLF to LF on paste
+vim.api.nvim_create_autocmd("TextYankPost", {
+	callback = function()
+		local regtype = vim.v.event.regtype
+		if regtype == 'v' or regtype == 'V' or regtype == '\x16' then
+			vim.cmd([[
+        execute 'normal! `[v`]g/\%x0d/d'
+      ]])
+		end
+	end,
+})
 
 vim.api.nvim_create_user_command('WQA', function()
 	local modified = false
@@ -40,9 +53,9 @@ vim.cmd('cnoreabbrev wqa WQA')
 if vim.loop.os_uname().sysname == 'Windows_NT' then
 	vim.opt.shell = "pwsh.exe"
 	vim.o.shellcmdflag =
-	"-NoLogo -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;"
-	vim.o.shellredir = "2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode"
-	vim.o.shellpipe = "2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode"
+	"-NoLogo -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new();$PSDefaultParameterValues['Out-File:Encoding']='utf8';"
+	vim.o.shellredir = '2>&1 | %%{ "$_" } | Out-File %s; exit $LastExitCode'
+	vim.o.shellpipe = '2>&1 | %%{ "$_" } | tee.exe %s; exit $LastExitCode'
 	vim.o.shellquote = ""
 	vim.o.shellxquote = ""
 end
