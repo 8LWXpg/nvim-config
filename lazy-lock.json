@@ -1,5 +1,6 @@
 {
   "HexEditor.nvim": { "branch": "master", "commit": "d599941283d8aed84fe47e8592b2dfd0d0945d6d" },
+  "alpha-nvim": { "branch": "main", "commit": "41283fb402713fc8b327e60907f74e46166f4cfd" },
   "coc.nvim": { "branch": "master", "commit": "1d3c525e2d6af0c07ed19fa7a5016ffc6a9e8421" },
   "lazy.nvim": { "branch": "main", "commit": "69041bccb70f68408633e93ed33012ee18889bb0" },
   "neo-tree.nvim": { "branch": "main", "commit": "8c75e8a2949cd6cd35525799200a8d34471ee9eb" },
@@ -10,6 +11,5 @@
   "plenary.nvim": { "branch": "master", "commit": "50012918b2fc8357b87cff2a7f7f0446e47da174" },
   "tokyonight.nvim": { "branch": "main", "commit": "67c6050e1ca41260c919236a098ba278472c7520" },
   "vim-snippets": { "branch": "master", "commit": "4ed409154bcaa32fba6fd153cc0c915e44982872" },
-  "vim-startify": { "branch": "master", "commit": "b81dfa54b979aac27179fe0583c2b92f04c8ddad" },
   "which-key.nvim": { "branch": "main", "commit": "0539da005b98b02cf730c1d9da82b8e8edb1c2d2" }
 }
