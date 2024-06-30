@@ -12,15 +12,6 @@ return {
 	'nvim-treesitter/nvim-treesitter',
 	{ 'ArcaneSpecs/HexEditor.nvim', config = true },
 	{
-		"nvim-neo-tree/neo-tree.nvim",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-			"MunifTanjim/nui.nvim",
-		},
-		config = true,
-	},
-	{
 		'goolord/alpha-nvim',
 		dependencies = { 'nvim-tree/nvim-web-devicons' },
 		config = function()

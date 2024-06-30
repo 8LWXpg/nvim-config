@@ -22,32 +22,13 @@ vim.opt.whichwrap:append("<>hl")
 
 -- Convert CRLF to LF on paste
 vim.api.nvim_create_autocmd("TextYankPost", {
+	group = vim.api.nvim_create_augroup("ConvertCRLFtoLF", { clear = true }),
 	callback = function()
-		local regtype = vim.v.event.regtype
-		if regtype == 'v' or regtype == 'V' or regtype == '\x16' then
-			vim.cmd([[
-        execute 'normal! `[v`]g/\%x0d/d'
-      ]])
+		if vim.v.event.operator == "p" or vim.v.event.operator == "P" then
+			vim.api.nvim_command([[silent! '[,']s/\r\n/\n/g]])
 		end
 	end,
 })
-
-vim.api.nvim_create_user_command('WQA', function()
-	local modified = false
-	for _, buf in ipairs(vim.api.nvim_list_bufs()) do
-		if vim.api.nvim_buf_get_option(buf, 'modified') then
-			modified = true
-			break
-		end
-	end
-
-	if modified then
-		vim.cmd('w')
-	end
-	vim.cmd('qa')
-end, { force = true })
-
-vim.cmd('cnoreabbrev wqa WQA')
 
 -- pwsh settings on Windows
 if vim.loop.os_uname().sysname == 'Windows_NT' then
