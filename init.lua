@@ -41,5 +41,7 @@ if vim.loop.os_uname().sysname == 'Windows_NT' then
 	vim.o.shellxquote = ""
 end
 
-require('keymaps')
+-- this have to set before loading lazy
+vim.g.mapleader = " "
 require('config')
+require('keymaps')
