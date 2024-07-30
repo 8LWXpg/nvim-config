@@ -26,11 +26,14 @@ return {
 	{
 		'nvim-telescope/telescope.nvim',
 		dependencies = { 'nvim-lua/plenary.nvim' },
-		keys = {
-			{ '<leader>ff', require('telescope.builtin').find_files },
-			{ '<leader>fg', require('telescope.builtin').live_grep },
-			{ '<leader>fb', require('telescope.builtin').buffers },
-			{ '<leader>fh', require('telescope.builtin').help_tags },
-		}
+		config = function(_, opts)
+			require('telescope').setup(opts)
+
+			local builtin = require('telescope.builtin')
+			vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+			vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+			vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+			vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+		end
 	},
 }
