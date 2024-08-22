@@ -1,7 +1,7 @@
 {
-  "HexEditor.nvim": { "branch": "master", "commit": "d599941283d8aed84fe47e8592b2dfd0d0945d6d" },
-  "alpha-nvim": { "branch": "main", "commit": "41283fb402713fc8b327e60907f74e46166f4cfd" },
-  "coc.nvim": { "branch": "master", "commit": "1d3c525e2d6af0c07ed19fa7a5016ffc6a9e8421" },
+  "HexEditor.nvim": { "branch": "master", "commit": "d93076f3b7876d98cdaa8052da82d6a05c0dfb5e" },
+  "alpha-nvim": { "branch": "main", "commit": "b6f4129302db197a7249e67a90de3f2b676de13e" },
+  "coc.nvim": { "branch": "master", "commit": "98fa66ae6a0bca9d1a9ab9bf5c6fe378aaa53f11" },
   "lazy.nvim": { "branch": "main", "commit": "077102c5bfc578693f12377846d427f49bc50076" },
   "neo-tree.nvim": { "branch": "main", "commit": "8c75e8a2949cd6cd35525799200a8d34471ee9eb" },
   "neodev.nvim": { "branch": "main", "commit": "1f4ebcc10852518166ce165e57d425a4265a10d4" },

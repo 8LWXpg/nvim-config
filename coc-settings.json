@@ -7,5 +7,10 @@
 		"enabled": true
 	},
 	"snippets.ultisnips.pythonPrompt": false,
-	"sumneko-lua.enableNvimLuaDev": true
+	"sumneko-lua.enableNvimLuaDev": true,
+	"powershell.codeFormatting.autoCorrectAliases": true,
+	"powershell.codeFormatting.newLineAfterCloseBrace": false,
+	"powershell.codeFormatting.pipelineIndentationStyle": "IncreaseIndentationForFirstPipeline",
+	"powershell.codeFormatting.trimWhitespaceAroundPipe": true,
+	"powershell.codeFormatting.whitespaceBetweenParameters": true
 }
