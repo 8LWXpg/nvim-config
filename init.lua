@@ -30,6 +30,15 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
+-- retrive cursor style after leave
+vim.api.nvim_create_autocmd("VimLeave", {
+	pattern = "*",
+	callback = function()
+		vim.opt.guicursor = ""
+		vim.fn.chansend(vim.v.stderr, "\x1b[ q")
+	end,
+})
+
 -- pwsh settings on Windows
 if vim.loop.os_uname().sysname == 'Windows_NT' then
 	vim.opt.shell = "pwsh.exe"
