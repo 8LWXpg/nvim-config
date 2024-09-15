@@ -43,9 +43,9 @@ vim.api.nvim_create_autocmd("VimLeave", {
 if vim.loop.os_uname().sysname == 'Windows_NT' then
 	vim.opt.shell = "pwsh.exe"
 	vim.o.shellcmdflag =
-	"-NoLogo -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new();$PSDefaultParameterValues['Out-File:Encoding']='utf8';"
-	vim.o.shellredir = '2>&1 | %%{ "$_" } | Out-File %s; exit $LastExitCode'
-	vim.o.shellpipe = '2>&1 | %%{ "$_" } | tee.exe %s; exit $LastExitCode'
+	"-nop -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new();$PSDefaultParameterValues['Out-File:Encoding']='utf8';"
+	vim.o.shellredir = '2>&1 | Join-String -Separator "`n" | Out-File -NoNewline %s; exit $LastExitCode'
+	vim.o.shellpipe = '2>&1 | Join-String -Separator "`n" | tee.exe %s; exit $LastExitCode'
 	vim.o.shellquote = ""
 	vim.o.shellxquote = ""
 end
