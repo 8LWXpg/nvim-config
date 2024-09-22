@@ -15,7 +15,7 @@ return {
 	'folke/neodev.nvim',
 	'honza/vim-snippets',
 	'nvim-treesitter/nvim-treesitter',
-	{ 'ArcaneSpecs/HexEditor.nvim',  config = true },
+	{ 'ArcaneSpecs/HexEditor.nvim', config = true },
 	{
 		'goolord/alpha-nvim',
 		dependencies = { 'nvim-tree/nvim-web-devicons' },
@@ -23,6 +23,6 @@ return {
 			require('alpha').setup(require 'alpha.themes.startify'.config)
 		end
 	},
-	{ 'anuvyklack/pretty-fold.nvim', config = true },
-		'neoclide/coc.nvim',
+	{ 'neoclide/coc.nvim',          build = "npm ci" },
+	{ 'numToStr/Comment.nvim',      config = true },
 }
