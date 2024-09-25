@@ -10,6 +10,8 @@ vim.o.mouse = 'a'               -- enable mouse click
 vim.o.clipboard = 'unnamedplus' -- using system clipboard
 vim.o.ttyfast = true            -- Speed up scrolling in Vim
 vim.o.swapfile = false          -- disable creating swap file
+vim.o.foldmethod = "syntax"     -- folding based on syntax
+vim.o.foldlevel = 99            -- open all fold
 
 vim.wo.number = true            -- add line numbers
 vim.wo.relativenumber = true
@@ -17,7 +19,6 @@ vim.wo.cursorline = true        -- highlight current cursorline
 
 vim.opt.fileformat = "unix"     -- Set default line ending to LF
 vim.opt.fileformats = "unix,dos"
-
 vim.opt.whichwrap:append("<>hl")
 
 -- Convert CRLF to LF on paste
