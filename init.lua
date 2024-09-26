@@ -53,5 +53,5 @@ end
 
 -- this have to set before loading lazy
 vim.g.mapleader = " "
-require('config')
+require('config.lazy')
 require('keymaps')
