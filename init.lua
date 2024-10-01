@@ -51,7 +51,22 @@ if vim.loop.os_uname().sysname == 'Windows_NT' then
 	vim.o.shellxquote = ""
 end
 
+-- OSC52 on remote
+if (os.getenv('SSH_TTY') ~= nil) then
+	vim.g.clipboard = {
+		name = 'OSC 52',
+		copy = {
+			['+'] = require('vim.ui.clipboard.osc52').copy('+'),
+			['*'] = require('vim.ui.clipboard.osc52').copy('*'),
+		},
+		paste = {
+			['+'] = require('vim.ui.clipboard.osc52').paste('+'),
+			['*'] = require('vim.ui.clipboard.osc52').paste('*'),
+		},
+	}
+end
+
+
 -- this have to set before loading lazy
-vim.g.mapleader = " "
 require('config.lazy')
 require('keymaps')
