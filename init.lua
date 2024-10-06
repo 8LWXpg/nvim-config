@@ -20,6 +20,15 @@ vim.wo.cursorline = true        -- highlight current cursorline
 vim.opt.fileformat = "unix"     -- Set default line ending to LF
 vim.opt.fileformats = "unix,dos"
 vim.opt.whichwrap:append("<>hl")
+vim.opt.autoread = true
+
+-- Show a message when the file is changed on disk and reloaded
+vim.api.nvim_create_autocmd("FileChangedShellPost", {
+	pattern = "*",
+	callback = function()
+		vim.cmd('echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None')
+	end,
+})
 
 -- Convert CRLF to LF on paste
 vim.api.nvim_create_autocmd("TextYankPost", {
@@ -60,8 +69,8 @@ if (os.getenv('SSH_TTY') ~= nil) then
 			['*'] = require('vim.ui.clipboard.osc52').copy('*'),
 		},
 		paste = {
-			['+'] = require('vim.ui.clipboard.osc52').paste('+'),
-			['*'] = require('vim.ui.clipboard.osc52').paste('*'),
+			['+'] = vim.fn['provider#clipboard#paste'],
+			['*'] = vim.fn['provider#clipboard#paste'],
 		},
 	}
 end
