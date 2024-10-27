@@ -1,4 +1,5 @@
 {
+  "coc.preferences.formatOnSave": true,
   "languageserver": {
     "nix": {
       "command": "nil",
@@ -9,16 +10,15 @@
       }
     }
   },
-  "coc.preferences.formatOnSave": true,
-  "toml": {
-    "formatter.columnWidth": 130,
-    "enabled": true
-  },
-  "snippets.ultisnips.pythonPrompt": false,
-  "sumneko-lua.enableNvimLuaDev": true,
   "powershell.codeFormatting.autoCorrectAliases": true,
   "powershell.codeFormatting.newLineAfterCloseBrace": false,
   "powershell.codeFormatting.pipelineIndentationStyle": "IncreaseIndentationForFirstPipeline",
   "powershell.codeFormatting.trimWhitespaceAroundPipe": true,
-  "powershell.codeFormatting.whitespaceBetweenParameters": true
+  "powershell.codeFormatting.whitespaceBetweenParameters": true,
+  "snippets.ultisnips.pythonPrompt": false,
+  "sumneko-lua.enableNvimLuaDev": true,
+  "toml": {
+    "enabled": true,
+    "formatter.columnWidth": 130
+  }
 }

@@ -10,6 +10,6 @@ return {
 			require('alpha').setup(require 'alpha.themes.startify'.config)
 		end
 	},
-	{ 'neoclide/coc.nvim',     build = "npm ci" },
+	{ 'neoclide/coc.nvim',     branch = 'release' },
 	{ 'numToStr/Comment.nvim', config = true },
 }
