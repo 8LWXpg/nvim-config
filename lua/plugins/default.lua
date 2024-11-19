@@ -2,7 +2,7 @@ return {
 	'folke/neodev.nvim',
 	'honza/vim-snippets',
 	'nvim-treesitter/nvim-treesitter',
-	{ 'RaafatTurki/hex.nvim',  config = true },
+	{ 'RaafatTurki/hex.nvim', config = true },
 	{
 		'goolord/alpha-nvim',
 		dependencies = { 'nvim-tree/nvim-web-devicons' },
@@ -10,6 +10,6 @@ return {
 			require('alpha').setup(require 'alpha.themes.startify'.config)
 		end
 	},
-	{ 'neoclide/coc.nvim',     branch = 'release' },
-	{ 'numToStr/Comment.nvim', config = true },
+	{ 'neoclide/coc.nvim',    branch = 'release' },
+	'sindrets/diffview.nvim',
 }

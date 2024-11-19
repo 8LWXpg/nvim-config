@@ -1,10 +1,10 @@
-vim.o.showmatch = true          -- show matching
-vim.o.ignorecase = true         -- case insensitive
-vim.o.hlsearch = true           -- highlight search
-vim.o.incsearch = true          -- incremental search
-vim.o.tabstop = 4               -- number of columns occupied by a tab
-vim.o.softtabstop = 4           -- see multiple spaces as tabstops so <BS> does the right thing
-vim.o.shiftwidth = 4            -- width for autoindents
+vim.o.showmatch = true  -- show matching
+vim.o.ignorecase = true -- case insensitive
+vim.o.hlsearch = true   -- highlight search
+vim.o.incsearch = true  -- incremental search
+vim.o.tabstop = 4       -- number of columns occupied by a tab
+-- vim.o.softtabstop = 4           -- see multiple spaces as tabstops so <BS> does the right thing
+-- vim.o.shiftwidth = 4            -- width for autoindents
 vim.o.autoindent = true         -- indent a new line the same amount as the line just typed
 vim.o.mouse = 'a'               -- enable mouse click
 vim.o.clipboard = 'unnamedplus' -- using system clipboard
@@ -21,6 +21,7 @@ vim.opt.fileformat = "unix"     -- Set default line ending to LF
 vim.opt.fileformats = "unix,dos"
 vim.opt.whichwrap:append("<>hl")
 vim.opt.autoread = true
+vim.opt.wrap = false -- no line wrap
 
 -- Show a message when the file is changed on disk and reloaded
 vim.api.nvim_create_autocmd("FileChangedShellPost", {
