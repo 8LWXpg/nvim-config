@@ -6,11 +6,7 @@ return {
 		'goolord/alpha-nvim',
 		dependencies = { 'nvim-tree/nvim-web-devicons' },
 		config = function()
-			local startify = require("alpha.themes.startify")
-			startify.file_icons.provider = "devicons"
-			require("alpha").setup(
-				startify.config
-			)
+			require 'alpha'.setup(require 'alpha.themes.startify'.config)
 		end
 	},
 	{ 'neoclide/coc.nvim',    branch = 'release' },
@@ -18,6 +14,7 @@ return {
 	{
 		"OXY2DEV/markview.nvim",
 		lazy = false,
+		version = '*',
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter",
 			"nvim-tree/nvim-web-devicons"
