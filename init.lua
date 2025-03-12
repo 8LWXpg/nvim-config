@@ -32,13 +32,26 @@ vim.api.nvim_create_autocmd("FileChangedShellPost", {
 })
 
 -- Convert CRLF to LF on paste
-vim.api.nvim_create_autocmd("TextYankPost", {
-	group = vim.api.nvim_create_augroup("ConvertCRLFtoLF", { clear = true }),
+-- vim.api.nvim_create_autocmd("TextYankPost", {
+-- 	group = vim.api.nvim_create_augroup("ConvertCRLFtoLF", { clear = true }),
+-- 	callback = function()
+-- 		if vim.v.event.operator == "p" or vim.v.event.operator == "P" then
+-- 			vim.api.nvim_command([[silent! '[,']s/\r\n/\n/g]])
+-- 		end
+-- 	end,
+-- })
+
+-- Convert CRLF to LF on save
+vim.api.nvim_create_autocmd("BufWritePre", {
+	pattern = "*",
 	callback = function()
-		if vim.v.event.operator == "p" or vim.v.event.operator == "P" then
-			vim.api.nvim_command([[silent! '[,']s/\r\n/\n/g]])
+		if vim.bo.fileformat == "dos" then
+			vim.bo.fileformat = "unix"
+		else
+			vim.fn.execute("%s/\\r//g", "silent!")
 		end
 	end,
+	desc = "Convert CRLF to LF on save",
 })
 
 -- retrive cursor style after leave
@@ -61,7 +74,7 @@ if vim.loop.os_uname().sysname == 'Windows_NT' then
 	vim.o.shellxquote = ""
 end
 
--- OSC52 on remote
+-- Force OSC52 on remote
 if (os.getenv('SSH_TTY') ~= nil) then
 	vim.g.clipboard = {
 		name = 'OSC 52',
@@ -76,8 +89,7 @@ if (os.getenv('SSH_TTY') ~= nil) then
 	}
 end
 
-
 -- this have to set before loading lazy
 require('config.lazy')
 require('keymaps')
-require('coc-keymaps')
+require('lsp.lsp')

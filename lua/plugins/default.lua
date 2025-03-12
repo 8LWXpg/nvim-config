@@ -1,7 +1,11 @@
 return {
 	'honza/vim-snippets',
-	{ 'nvim-treesitter/nvim-treesitter', build = ":TSUpdate" },
-	{ 'RaafatTurki/hex.nvim',            config = true },
+	{
+		'nvim-treesitter/nvim-treesitter',
+		event = { "BufReadPre", "BufNewFile" },
+		build = ":TSUpdate",
+	},
+	{ 'RaafatTurki/hex.nvim',   config = true },
 	{
 		'goolord/alpha-nvim',
 		dependencies = { 'nvim-tree/nvim-web-devicons' },
@@ -12,7 +16,6 @@ return {
 			require 'alpha'.setup(require 'alpha.themes.startify'.config)
 		end,
 	},
-	{ 'neoclide/coc.nvim',      branch = 'release' },
 	{ 'sindrets/diffview.nvim', cmd = "DiffviewOpen" },
 	{
 		"OXY2DEV/markview.nvim",
@@ -22,5 +25,5 @@ return {
 			"nvim-treesitter/nvim-treesitter",
 			"nvim-tree/nvim-web-devicons",
 		},
-	}
+	},
 }
