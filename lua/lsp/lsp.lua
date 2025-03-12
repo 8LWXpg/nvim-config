@@ -43,6 +43,7 @@ require("luasnip.loaders.from_vscode").lazy_load()
 require('mason').setup({})
 require('mason-lspconfig').setup({
 	ensure_installed = {
+		'lua_ls',
 	},
 	handlers = {
 		function(server)
@@ -51,6 +52,15 @@ require('mason-lspconfig').setup({
 			})
 		end,
 	}
+})
+require 'lspconfig'.nil_ls.setup({
+	settings = {
+		['nil'] = {
+			formatting = {
+				command = { 'nixfmt' },
+			},
+		},
+	},
 })
 
 
