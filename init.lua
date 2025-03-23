@@ -23,6 +23,10 @@ vim.opt.whichwrap:append("<>hl")
 vim.opt.autoread = true
 vim.opt.wrap = false -- no line wrap
 
+-- Disable netrw completely
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 -- Show a message when the file is changed on disk and reloaded
 vim.api.nvim_create_autocmd("FileChangedShellPost", {
 	pattern = "*",
@@ -31,23 +35,13 @@ vim.api.nvim_create_autocmd("FileChangedShellPost", {
 	end,
 })
 
--- Convert CRLF to LF on paste
--- vim.api.nvim_create_autocmd("TextYankPost", {
--- 	group = vim.api.nvim_create_augroup("ConvertCRLFtoLF", { clear = true }),
--- 	callback = function()
--- 		if vim.v.event.operator == "p" or vim.v.event.operator == "P" then
--- 			vim.api.nvim_command([[silent! '[,']s/\r\n/\n/g]])
--- 		end
--- 	end,
--- })
-
 -- Convert CRLF to LF on save
 vim.api.nvim_create_autocmd("BufWritePre", {
 	pattern = "*",
 	callback = function()
 		if vim.bo.fileformat == "dos" then
 			vim.bo.fileformat = "unix"
-		elseif vim.loop.os_uname().sysname == 'Windows_NT' then
+		elseif jit.os == 'Windows' then
 			vim.fn.execute("%s/\\r//g", "silent!")
 		end
 	end,
@@ -64,7 +58,7 @@ vim.api.nvim_create_autocmd("VimLeave", {
 })
 
 -- pwsh settings on Windows
-if vim.loop.os_uname().sysname == 'Windows_NT' then
+if jit.os == 'Windows' then
 	vim.opt.shell = "pwsh.exe"
 	vim.o.shellcmdflag =
 	"-nop -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new();$PSDefaultParameterValues['Out-File:Encoding']='utf8';"
