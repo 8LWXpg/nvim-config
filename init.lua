@@ -47,7 +47,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 	callback = function()
 		if vim.bo.fileformat == "dos" then
 			vim.bo.fileformat = "unix"
-		else
+		elseif vim.loop.os_uname().sysname == 'Windows_NT' then
 			vim.fn.execute("%s/\\r//g", "silent!")
 		end
 	end,
