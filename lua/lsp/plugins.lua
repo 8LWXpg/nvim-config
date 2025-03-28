@@ -1,24 +1,58 @@
 return {
 	{
 		'neovim/nvim-lspconfig',
-		event = { "BufReadPre", "BufNewFile" },
 		dependencies = {
-			'williamboman/mason.nvim',
-			'williamboman/mason-lspconfig.nvim',
+			'saghen/blink.cmp',
+		},
+		opts = {
+			servers = {
+				lua_ls = {},
+				nil_ls = {
+					settings = {
+						['nil'] = {
+							formatting = {
+								command = { 'nixfmt' },
+							},
+						},
+					},
+				},
+			},
+		},
+		config = function(_, opts)
+			local lspconfig = require('lspconfig')
+			for server, config in pairs(opts.servers) do
+				-- passing config.capabilities to blink.cmp merges with the capabilities in your
+				-- `opts[server].capabilities, if you've defined it
+				config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
+				lspconfig[server].setup(config)
+			end
+		end,
+	},
+	{ 'williamboman/mason.nvim', config = true },
+	{
+		'saghen/blink.cmp',
+		dependencies = { 'rafamadriz/friendly-snippets' },
+		version = '1.*',
+		opts = {
+			completion = {
+				accept = { auto_brackets = { enabled = true }, },
+				documentation = { auto_show = true },
+				ghost_text = { enabled = true },
+			},
+			keymap = { preset = 'super-tab' },
+			cmdline = {
+				completion = {
+					menu = { auto_show = true },
+					ghost_text = { enabled = true },
+				},
+				keymap = {
+					['<Tab>'] = { 'show', 'accept' },
+				},
+			},
 		},
 	},
 	{
-		'hrsh7th/nvim-cmp',
-		event = { "BufReadPre", "BufNewFile" },
-		dependencies = {
-			'hrsh7th/cmp-nvim-lsp',
-			'hrsh7th/cmp-buffer',
-			'saadparwaiz1/cmp_luasnip',
-		},
-	},
-	{
-		"L3MON4D3/LuaSnip",
-		event = { "BufReadPre", "BufNewFile" },
-		dependencies = { "rafamadriz/friendly-snippets" },
+		"folke/noice.nvim",
+		event = "VeryLazy",
 	},
 }
