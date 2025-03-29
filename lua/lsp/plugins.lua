@@ -45,9 +45,7 @@ return {
 					menu = { auto_show = true },
 					ghost_text = { enabled = true },
 				},
-				keymap = {
-					['<Tab>'] = { 'show', 'accept' },
-				},
+				keymap = { preset = 'inherit' },
 			},
 		},
 	},
