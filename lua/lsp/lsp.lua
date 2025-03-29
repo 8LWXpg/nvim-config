@@ -2,6 +2,32 @@
 -- This will avoid an annoying layout shift in the screen
 vim.opt.signcolumn = 'yes'
 
+local lspconfig = require('lspconfig')
+local lsp_capabilities = require('blink.cmp').get_lsp_capabilities()
+
+require('mason').setup({})
+require('mason-lspconfig').setup({
+	ensure_installed = {
+		'lua_ls',
+	},
+	handlers = {
+		function(server)
+			lspconfig[server].setup({
+				capabilities = lsp_capabilities,
+			})
+		end,
+	}
+})
+require 'lspconfig'.nil_ls.setup({
+	settings = {
+		['nil'] = {
+			formatting = {
+				command = { 'nixfmt' },
+			},
+		},
+	},
+})
+
 local buffer_autoformat = function(bufnr)
 	local group = 'lsp_autoformat'
 	vim.api.nvim_create_augroup(group, { clear = false })
