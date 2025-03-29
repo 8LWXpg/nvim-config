@@ -16,7 +16,7 @@ require('mason-lspconfig').setup({
 				capabilities = lsp_capabilities,
 			})
 		end,
-	}
+	},
 })
 require 'lspconfig'.nil_ls.setup({
 	settings = {
@@ -74,5 +74,5 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		if client.supports_method('textDocument/formatting') then
 			buffer_autoformat(event.buf)
 		end
-	end
+	end,
 })

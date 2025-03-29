@@ -1,9 +1,9 @@
 return {
-	'honza/vim-snippets',
 	{
 		'nvim-treesitter/nvim-treesitter',
-		event = { "BufReadPre", "BufNewFile" },
-		build = ":TSUpdate",
+		build = ':TSUpdate',
+		event = 'VeryLazy',
+		lazy = vim.fn.argc(-1) == 0, -- load treesitter early when opening a file from the cmdline
 	},
 	{ 'RaafatTurki/hex.nvim',   config = true },
 	{
@@ -16,25 +16,10 @@ return {
 			require 'alpha'.setup(require 'alpha.themes.startify'.config)
 		end,
 	},
-	{ 'sindrets/diffview.nvim', cmd = "DiffviewOpen" },
-	{
-		"OXY2DEV/markview.nvim",
-		version = '*',
-		ft = { "markdown" },
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter",
-			"nvim-tree/nvim-web-devicons",
-		},
-	},
+	{ 'sindrets/diffview.nvim', cmd = 'DiffviewOpen' },
 	{
 		'echasnovski/mini.pairs',
 		version = '*',
-		config = true,
-	},
-	{
-		'akinsho/bufferline.nvim',
-		version = "*",
-		dependencies = 'nvim-tree/nvim-web-devicons',
 		config = true,
 	},
 }

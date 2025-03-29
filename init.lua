@@ -10,16 +10,16 @@ vim.o.mouse = 'a'               -- enable mouse click
 vim.o.clipboard = 'unnamedplus' -- using system clipboard
 vim.o.ttyfast = true            -- Speed up scrolling in Vim
 vim.o.swapfile = false          -- disable creating swap file
-vim.o.foldmethod = "syntax"     -- folding based on syntax
+vim.o.foldmethod = 'syntax'     -- folding based on syntax
 vim.o.foldlevel = 99            -- open all fold
 
 vim.wo.number = true            -- add line numbers
 vim.wo.relativenumber = true
 vim.wo.cursorline = true        -- highlight current cursorline
 
-vim.opt.fileformat = "unix"     -- Set default line ending to LF
-vim.opt.fileformats = "unix,dos"
-vim.opt.whichwrap:append("<>hl")
+vim.opt.fileformat = 'unix'     -- Set default line ending to LF
+vim.opt.fileformats = 'unix,dos'
+vim.opt.whichwrap:append('<>hl')
 vim.opt.autoread = true
 vim.opt.wrap = false -- no line wrap
 
@@ -28,44 +28,44 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 -- Show a message when the file is changed on disk and reloaded
-vim.api.nvim_create_autocmd("FileChangedShellPost", {
-	pattern = "*",
+vim.api.nvim_create_autocmd('FileChangedShellPost', {
+	pattern = '*',
 	callback = function()
 		vim.cmd('echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None')
 	end,
 })
 
 -- Convert CRLF to LF on save
-vim.api.nvim_create_autocmd("BufWritePre", {
-	pattern = "*",
+vim.api.nvim_create_autocmd('BufWritePre', {
+	pattern = '*',
 	callback = function()
-		if vim.bo.fileformat == "dos" then
-			vim.bo.fileformat = "unix"
+		if vim.bo.fileformat == 'dos' then
+			vim.bo.fileformat = 'unix'
 		elseif jit.os == 'Windows' then
-			vim.fn.execute("%s/\\r//g", "silent!")
+			vim.fn.execute('%s/\\r//g', 'silent!')
 		end
 	end,
-	desc = "Convert CRLF to LF on save",
+	desc = 'Convert CRLF to LF on save',
 })
 
 -- retrive cursor style after leave
-vim.api.nvim_create_autocmd("VimLeave", {
-	pattern = "*",
+vim.api.nvim_create_autocmd('VimLeave', {
+	pattern = '*',
 	callback = function()
-		vim.opt.guicursor = ""
-		vim.fn.chansend(vim.v.stderr, "\x1b[ q")
+		vim.opt.guicursor = ''
+		vim.fn.chansend(vim.v.stderr, '\x1b[ q')
 	end,
 })
 
 -- pwsh settings on Windows
 if jit.os == 'Windows' then
-	vim.opt.shell = "pwsh.exe"
+	vim.opt.shell = 'pwsh.exe'
 	vim.o.shellcmdflag =
 	"-nop -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new();$PSDefaultParameterValues['Out-File:Encoding']='utf8';"
 	vim.o.shellredir = '2>&1 | Join-String -Separator "`n" | Out-File -NoNewline %s; exit $LastExitCode'
 	vim.o.shellpipe = '2>&1 | Join-String -Separator "`n" | tee.exe %s; exit $LastExitCode'
-	vim.o.shellquote = ""
-	vim.o.shellxquote = ""
+	vim.o.shellquote = ''
+	vim.o.shellxquote = ''
 end
 
 -- Force OSC52 on remote

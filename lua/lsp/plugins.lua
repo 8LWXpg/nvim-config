@@ -1,14 +1,15 @@
 return {
-	"williamboman/mason-lspconfig.nvim",
+	'williamboman/mason-lspconfig.nvim',
 	'williamboman/mason.nvim',
 	'neovim/nvim-lspconfig',
 	{
 		'saghen/blink.cmp',
-		dependencies = { 'rafamadriz/friendly-snippets' },
 		version = '1.*',
+		event = 'InsertEnter',
+		dependencies = { 'rafamadriz/friendly-snippets' },
 		opts = {
 			completion = {
-				accept = { auto_brackets = { enabled = true }, },
+				accept = { auto_brackets = { enabled = true } },
 				documentation = { auto_show = true },
 				ghost_text = { enabled = true },
 			},
@@ -23,7 +24,7 @@ return {
 		},
 	},
 	{
-		"folke/noice.nvim",
-		event = "VeryLazy",
+		'folke/noice.nvim',
+		event = 'VeryLazy',
 	},
 }
