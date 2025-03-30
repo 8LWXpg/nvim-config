@@ -22,6 +22,7 @@ vim.opt.fileformats = 'unix,dos'
 vim.opt.whichwrap:append('<>hl')
 vim.opt.autoread = true
 vim.opt.wrap = false -- no line wrap
+vim.opt.fillchars:append { diff = '╱' }
 
 -- Disable netrw completely
 vim.g.loaded_netrw = 1

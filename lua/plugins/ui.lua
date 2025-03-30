@@ -11,10 +11,29 @@ return {
 						filetype = 'neo-tree',
 						text = 'Neo Tree',
 					},
+					{
+						filetype = 'DiffviewFiles',
+						text = 'Diff View',
+					},
 				},
 				diagnostics = 'nvim_lsp',
 				show_close_icon = false,
 				show_buffer_close_icons = false,
+				enforce_regular_tabs = true,
+			},
+		},
+	},
+	{
+		'sindrets/diffview.nvim',
+		cmd = { 'DiffviewOpen', 'DiffviewFileHistory' },
+		opts = {
+			enhanced_diff_hl = true,
+			use_icons = true,
+			view = {
+				default = { layout = 'diff2_horizontal' },
+				merge_tool = {
+					disable_diagnostics = true,
+				},
 			},
 		},
 	},
@@ -39,6 +58,9 @@ return {
 			sources = { 'filesystem', 'git_status' },
 			filesystem = {
 				hijack_netrw_behavior = 'open_default',
+				window = {
+					width = 35,
+				},
 			},
 			source_selector = {
 				winbar = true,

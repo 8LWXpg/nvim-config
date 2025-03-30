@@ -5,7 +5,7 @@ return {
 		event = 'VeryLazy',
 		lazy = vim.fn.argc(-1) == 0, -- load treesitter early when opening a file from the cmdline
 	},
-	{ 'RaafatTurki/hex.nvim',   config = true },
+	{ 'RaafatTurki/hex.nvim', config = true },
 	{
 		'goolord/alpha-nvim',
 		dependencies = { 'nvim-tree/nvim-web-devicons' },
@@ -16,7 +16,6 @@ return {
 			require 'alpha'.setup(require 'alpha.themes.startify'.config)
 		end,
 	},
-	{ 'sindrets/diffview.nvim', cmd = 'DiffviewOpen' },
 	{
 		'echasnovski/mini.pairs',
 		version = '*',
