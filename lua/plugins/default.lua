@@ -5,7 +5,7 @@ return {
 		event = 'VeryLazy',
 		lazy = vim.fn.argc(-1) == 0, -- load treesitter early when opening a file from the cmdline
 	},
-	{ 'RaafatTurki/hex.nvim', config = true },
+	{ 'RaafatTurki/hex.nvim',      config = true },
 	{
 		'goolord/alpha-nvim',
 		dependencies = { 'nvim-tree/nvim-web-devicons' },
@@ -21,4 +21,5 @@ return {
 		version = '*',
 		config = true,
 	},
+	{ 'nmac427/guess-indent.nvim', config = true },
 }
