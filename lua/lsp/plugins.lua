@@ -9,9 +9,7 @@ return {
 		dependencies = { 'rafamadriz/friendly-snippets' },
 		opts = {
 			completion = {
-				accept = { auto_brackets = { enabled = true } },
 				documentation = { auto_show = true },
-				ghost_text = { enabled = true },
 			},
 			keymap = { preset = 'super-tab' },
 			cmdline = {
@@ -22,9 +20,5 @@ return {
 				keymap = { preset = 'inherit' },
 			},
 		},
-	},
-	{
-		'folke/noice.nvim',
-		event = 'VeryLazy',
 	},
 }
