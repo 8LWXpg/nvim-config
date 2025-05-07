@@ -5,7 +5,21 @@ return {
 		event = 'VeryLazy',
 		lazy = vim.fn.argc(-1) == 0, -- load treesitter early when opening a file from the cmdline
 	},
-	{ 'RaafatTurki/hex.nvim',      config = true },
+	{
+		'RaafatTurki/hex.nvim',
+		cmd = { 'HexToggle' },
+		init = function()
+			-- Auto-load in binary mode (nvim -b)
+			if vim.o.binary then
+				vim.api.nvim_create_autocmd('BufReadPost', {
+					callback = function()
+						require('hex').dump()
+					end,
+				})
+			end
+		end,
+		config = true,
+	},
 	{
 		'goolord/alpha-nvim',
 		dependencies = { 'nvim-tree/nvim-web-devicons' },
