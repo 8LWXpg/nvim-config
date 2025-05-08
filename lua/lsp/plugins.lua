@@ -2,9 +2,7 @@ return {
 	{
 		'mason-org/mason-lspconfig.nvim',
 		version = '2.*',
-		opts = {
-			ensure_installed = { 'lua_ls' },
-		},
+		config = true,
 	},
 	{
 		'mason-org/mason.nvim',

@@ -1,6 +1,9 @@
 -- Reserve a space in the gutter
 -- This will avoid an annoying layout shift in the screen
 vim.opt.signcolumn = 'yes'
+vim.lsp.enable({
+	'lua_ls', 'nil_ls',
+})
 
 local buffer_autoformat = function(bufnr)
 	local group = 'lsp_autoformat'
