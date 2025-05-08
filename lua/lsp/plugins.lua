@@ -1,11 +1,20 @@
 return {
-	'williamboman/mason-lspconfig.nvim',
-	'williamboman/mason.nvim',
+	{
+		'mason-org/mason-lspconfig.nvim',
+		version = '2.*',
+		opts = {
+			ensure_installed = { 'lua_ls' },
+		},
+	},
+	{
+		'mason-org/mason.nvim',
+		version = '2.*',
+		config = true,
+	},
 	'neovim/nvim-lspconfig',
 	{
 		'saghen/blink.cmp',
 		version = '1.*',
-		event = 'InsertEnter',
 		dependencies = { 'rafamadriz/friendly-snippets' },
 		opts = {
 			completion = {
