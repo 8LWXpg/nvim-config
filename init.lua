@@ -87,4 +87,4 @@ end
 -- this have to set before loading lazy
 require('config.lazy')
 require('keymaps')
-require('lsp.lsp')
+require('lsp.settigns')
