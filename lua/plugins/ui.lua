@@ -40,7 +40,7 @@ return {
 	{
 		'OXY2DEV/markview.nvim',
 		version = '*',
-		ft = { 'markdown' },
+		ft = { 'markdown', 'typst' },
 		dependencies = {
 			'nvim-treesitter/nvim-treesitter',
 			'nvim-tree/nvim-web-devicons',
@@ -54,9 +54,16 @@ return {
 			'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
 			'MunifTanjim/nui.nvim',
 		},
+		lazy = false,
+		---@module "neo-tree"
+		---@type neotree.Config?
 		opts = {
 			sources = { 'filesystem', 'git_status' },
 			filesystem = {
+				filtered_items = {
+					hide_dotfiles = false,
+				},
+				group_empty_dirs = true,
 				hijack_netrw_behavior = 'open_default',
 				window = {
 					width = 35,
@@ -64,6 +71,11 @@ return {
 			},
 			source_selector = {
 				winbar = true,
+			},
+			default_component_configs = {
+				modified = {
+					symbol = '',
+				},
 			},
 		},
 	},
@@ -80,6 +92,17 @@ return {
 					require('which-key').show({ global = true })
 				end,
 				desc = 'Buffer Local Keymaps (which-key)',
+			},
+		},
+	},
+	{
+		'nvim-lualine/lualine.nvim',
+		dependencies = { 'nvim-tree/nvim-web-devicons' },
+		opts = {
+			options = {
+				disabled_filetypes = {
+					statusline = { 'neo-tree', 'DiffviewFiles' },
+				},
 			},
 		},
 	},

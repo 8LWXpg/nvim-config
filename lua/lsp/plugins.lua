@@ -11,7 +11,21 @@ return {
 		version = '2.*',
 		config = true,
 	},
-	'neovim/nvim-lspconfig',
+	{
+		'neovim/nvim-lspconfig',
+		version = '2.*',
+	},
+	{
+		'folke/lazydev.nvim',
+		ft = 'lua', -- only load on lua files
+		opts = {
+			library = {
+				-- See the configuration section for more details
+				-- Load luvit types when the `vim.uv` word is found
+				{ path = '${3rd}/luv/library', words = { 'vim%.uv' } },
+			},
+		},
+	},
 	{
 		'saghen/blink.cmp',
 		version = '1.*',
@@ -29,12 +43,13 @@ return {
 				keymap = { preset = 'inherit' },
 			},
 			sources = {
+				default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer' },
 				providers = {
-					cmdline = {
-						-- ignores cmdline completions when executing shell commands
-						enabled = function()
-							return vim.fn.getcmdtype() ~= ':' or not vim.fn.getcmdline():match("^[%%0-9,'<>%-]*!")
-						end,
+					lazydev = {
+						name = 'LazyDev',
+						module = 'lazydev.integrations.blink',
+						-- make lazydev completions top priority (see `:h blink.cmp`)
+						score_offset = 100,
 					},
 				},
 			},
