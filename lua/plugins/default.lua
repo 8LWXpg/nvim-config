@@ -36,4 +36,5 @@ return {
 		config = true,
 	},
 	{ 'nmac427/guess-indent.nvim', config = true },
+	{ 'echasnovski/mini.surround', version = '*', config = true },
 }
