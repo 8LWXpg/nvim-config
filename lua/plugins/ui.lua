@@ -32,7 +32,6 @@ return {
 			view = {
 				default = {
 					layout = 'diff2_horizontal',
-					disable_diagnostics = true,
 				},
 				merge_tool = {
 					layout = 'diff3_mixed',
