@@ -1,6 +1,7 @@
 -- Reserve a space in the gutter
 -- This will avoid an annoying layout shift in the screen
 vim.opt.signcolumn = 'yes'
+vim.diagnostic.config({ virtual_text = true })
 
 local buffer_autoformat = function(bufnr)
 	local group = 'lsp_autoformat'
@@ -20,6 +21,12 @@ end
 
 vim.api.nvim_create_autocmd('LspAttach', {
 	callback = function(event)
+		local id = vim.tbl_get(event, 'data', 'client_id')
+		local client = id and vim.lsp.get_client_by_id(id)
+		if client == nil then
+			return
+		end
+
 		local bufmap = function(mode, lhs, rhs)
 			vim.keymap.set(mode, lhs, rhs, { buffer = true })
 		end
@@ -38,12 +45,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		bufmap('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>')
 		bufmap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>')
 		bufmap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>')
-
-		local id = vim.tbl_get(event, 'data', 'client_id')
-		local client = id and vim.lsp.get_client_by_id(id)
-		if client == nil then
-			return
-		end
 
 		-- make sure there is at least one client with formatting capabilities
 		if client.supports_method('textDocument/formatting') then
