@@ -1,9 +1,23 @@
 return {
 	{
-		'nvim-treesitter/nvim-treesitter',
-		branch = 'main',
-		lazy = false,
-		build = ':TSUpdate',
+		'OXY2DEV/markview.nvim',
+		version = '*',
+		ft = { 'markdown', 'typst' },
+		dependencies = {
+			'nvim-treesitter/nvim-treesitter',
+			'nvim-tree/nvim-web-devicons',
+		},
+	},
+	{
+		'nvim-lualine/lualine.nvim',
+		dependencies = { 'nvim-tree/nvim-web-devicons' },
+		opts = {
+			options = {
+				disabled_filetypes = {
+					statusline = { 'neo-tree', 'DiffviewFiles' },
+				},
+			},
+		},
 	},
 	{
 		'RaafatTurki/hex.nvim',

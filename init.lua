@@ -3,21 +3,34 @@ vim.o.ignorecase = true         -- case insensitive
 vim.o.hlsearch = true           -- highlight search
 vim.o.incsearch = true          -- incremental search
 vim.o.tabstop = 4               -- number of columns occupied by a tab
--- vim.o.softtabstop = 4           -- see multiple spaces as tabstops so <BS> does the right thing
 vim.o.shiftwidth = 4            -- width for autoindents
 vim.o.autoindent = true         -- indent a new line the same amount as the line just typed
 vim.o.mouse = 'a'               -- enable mouse click
 vim.o.clipboard = 'unnamedplus' -- using system clipboard
 vim.o.ttyfast = true            -- Speed up scrolling in Vim
 vim.o.swapfile = false          -- disable creating swap file
-vim.o.foldmethod = 'syntax'     -- folding based on syntax
-vim.o.foldlevel = 99            -- open all fold
 
-vim.wo.number = true            -- add line numbers
+-- folding
+vim.o.foldmethod = 'expr'
+vim.o.foldlevel = 99
+-- Default to treesitter folding
+vim.o.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+-- Prefer LSP folding if client supports it
+vim.api.nvim_create_autocmd('LspAttach', {
+	callback = function(args)
+		local client = vim.lsp.get_client_by_id(args.data.client_id)
+		if client:supports_method('textDocument/foldingRange') then
+			local win = vim.api.nvim_get_current_win()
+			vim.wo[win][0].foldexpr = 'v:lua.vim.lsp.foldexpr()'
+		end
+	end,
+})
+
+vim.wo.number = true        -- add line numbers
 vim.wo.relativenumber = true
-vim.wo.cursorline = true        -- highlight current cursorline
+vim.wo.cursorline = true    -- highlight current cursorline
 
-vim.opt.fileformat = 'unix'     -- Set default line ending to LF
+vim.opt.fileformat = 'unix' -- Set default line ending to LF
 vim.opt.fileformats = 'unix,dos'
 vim.opt.whichwrap:append('<>hl')
 vim.opt.autoread = true
@@ -87,4 +100,3 @@ end
 -- this have to set before loading lazy
 require('config.lazy')
 require('keymaps')
-require('lsp.settigns')
