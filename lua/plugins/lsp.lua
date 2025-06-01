@@ -1,9 +1,7 @@
 -- Reserve a space in the gutter
 -- This will avoid an annoying layout shift in the screen
 vim.opt.signcolumn = 'yes'
-vim.lsp.enable({
-	'lua_ls', 'nil_ls',
-})
+vim.diagnostic.config({ virtual_text = true })
 
 local buffer_autoformat = function(bufnr)
 	local group = 'lsp_autoformat'
@@ -23,6 +21,12 @@ end
 
 vim.api.nvim_create_autocmd('LspAttach', {
 	callback = function(event)
+		local id = vim.tbl_get(event, 'data', 'client_id')
+		local client = id and vim.lsp.get_client_by_id(id)
+		if client == nil then
+			return
+		end
+
 		local bufmap = function(mode, lhs, rhs)
 			vim.keymap.set(mode, lhs, rhs, { buffer = true })
 		end
@@ -42,15 +46,75 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		bufmap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>')
 		bufmap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>')
 
-		local id = vim.tbl_get(event, 'data', 'client_id')
-		local client = id and vim.lsp.get_client_by_id(id)
-		if client == nil then
-			return
-		end
-
 		-- make sure there is at least one client with formatting capabilities
 		if client.supports_method('textDocument/formatting') then
 			buffer_autoformat(event.buf)
 		end
 	end,
 })
+
+vim.lsp.enable({ 'nil_ls', 'lua_ls' })
+
+return {
+	{
+		'mason-org/mason-lspconfig.nvim',
+		version = '2.*',
+		opts = {
+			ensure_installed = { 'lua_ls' },
+		},
+	},
+	{
+		'mason-org/mason.nvim',
+		version = '2.*',
+		config = true,
+	},
+	{
+		'neovim/nvim-lspconfig',
+		version = '2.*',
+	},
+	{
+		'folke/lazydev.nvim',
+		ft = 'lua', -- only load on lua files
+		opts = {
+			library = {
+				-- See the configuration section for more details
+				-- Load luvit types when the `vim.uv` word is found
+				{ path = '${3rd}/luv/library', words = { 'vim%.uv' } },
+			},
+		},
+	},
+	{
+		'saghen/blink.cmp',
+		version = '1.*',
+		dependencies = { 'rafamadriz/friendly-snippets' },
+		opts = {
+			completion = {
+				accept = { auto_brackets = { enabled = false } },
+				documentation = { auto_show = true },
+			},
+			keymap = { preset = 'super-tab' },
+			cmdline = {
+				completion = {
+					menu = { auto_show = true },
+				},
+				keymap = { preset = 'inherit' },
+			},
+			sources = {
+				default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer' },
+				providers = {
+					lazydev = {
+						name = 'LazyDev',
+						module = 'lazydev.integrations.blink',
+						-- make lazydev completions top priority (see `:h blink.cmp`)
+						score_offset = 100,
+					},
+				},
+			},
+		},
+	},
+	{
+		'folke/trouble.nvim',
+		opts = {}, -- for default options, refer to the configuration section for custom setup.
+		cmd = 'Trouble',
+	},
+}

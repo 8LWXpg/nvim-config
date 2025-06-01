@@ -1,9 +1,23 @@
 return {
 	{
-		'nvim-treesitter/nvim-treesitter',
-		build = ':TSUpdate',
-		event = 'VeryLazy',
-		lazy = vim.fn.argc(-1) == 0, -- load treesitter early when opening a file from the cmdline
+		'OXY2DEV/markview.nvim',
+		version = '*',
+		ft = { 'markdown', 'typst' },
+		dependencies = {
+			'nvim-treesitter/nvim-treesitter',
+			'nvim-tree/nvim-web-devicons',
+		},
+	},
+	{
+		'nvim-lualine/lualine.nvim',
+		dependencies = { 'nvim-tree/nvim-web-devicons' },
+		opts = {
+			options = {
+				disabled_filetypes = {
+					statusline = { 'neo-tree', 'DiffviewFiles' },
+				},
+			},
+		},
 	},
 	{
 		'RaafatTurki/hex.nvim',
@@ -36,4 +50,5 @@ return {
 		config = true,
 	},
 	{ 'nmac427/guess-indent.nvim', config = true },
+	{ 'echasnovski/mini.surround', version = '*', config = true },
 }
