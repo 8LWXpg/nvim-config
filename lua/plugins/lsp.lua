@@ -53,6 +53,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
 	end,
 })
 
+vim.lsp.enable({'nil_ls', 'lua_ls'})
+
 return {
 	{
 		'mason-org/mason-lspconfig.nvim',

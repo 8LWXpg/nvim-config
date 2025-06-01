@@ -1,5 +1,9 @@
 return {
-	formatting = {
-		command = { 'nixfmt' },
+	settings = {
+		['nil'] = {
+			formatting = {
+				command = { 'nixfmt' },
+			},
+		},
 	},
 }
