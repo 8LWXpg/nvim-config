@@ -2,35 +2,25 @@ return {
 	{
 		'OXY2DEV/markview.nvim',
 		version = '*',
+		lazy = false,
 		ft = { 'markdown', 'typst' },
 		dependencies = {
 			'nvim-treesitter/nvim-treesitter',
 			'nvim-tree/nvim-web-devicons',
-		},
-	},
-	{
-		'nvim-lualine/lualine.nvim',
-		dependencies = { 'nvim-tree/nvim-web-devicons' },
-		opts = {
-			options = {
-				disabled_filetypes = {
-					statusline = { 'neo-tree', 'DiffviewFiles' },
-				},
-			},
+			'saghen/blink.cmp',
 		},
 	},
 	{
 		'RaafatTurki/hex.nvim',
 		cmd = { 'HexToggle' },
+		cond = vim.o.binary,
 		init = function()
 			-- Auto-load in binary mode (nvim -b)
-			if vim.o.binary then
-				vim.api.nvim_create_autocmd('BufReadPost', {
-					callback = function()
-						require('hex').dump()
-					end,
-				})
-			end
+			vim.api.nvim_create_autocmd('BufReadPost', {
+				callback = function()
+					require('hex').dump()
+				end,
+			})
 		end,
 		config = true,
 	},
@@ -44,11 +34,7 @@ return {
 			require 'alpha'.setup(require 'alpha.themes.startify'.config)
 		end,
 	},
-	{
-		'echasnovski/mini.pairs',
-		version = '*',
-		config = true,
-	},
+	{ 'echasnovski/mini.pairs',    version = '*', config = true },
 	{ 'nmac427/guess-indent.nvim', config = true },
 	{ 'echasnovski/mini.surround', version = '*', config = true },
 }

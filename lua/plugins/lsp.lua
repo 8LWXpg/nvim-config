@@ -101,11 +101,14 @@ return {
 			},
 			sources = {
 				default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer' },
+				per_filetype = {
+					markdown = { 'markview' },
+				},
 				providers = {
 					lazydev = {
 						name = 'LazyDev',
 						module = 'lazydev.integrations.blink',
-						-- make lazydev completions top priority (see `:h blink.cmp`)
+						-- Make lazydev completions top priority (see `:h blink.cmp`)
 						score_offset = 100,
 					},
 				},
