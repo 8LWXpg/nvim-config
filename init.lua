@@ -9,6 +9,7 @@ vim.o.mouse = 'a'               -- enable mouse click
 vim.o.clipboard = 'unnamedplus' -- using system clipboard
 vim.o.ttyfast = true            -- Speed up scrolling in Vim
 vim.o.swapfile = false          -- disable creating swap file
+vim.o.winborder = 'rounded'
 
 -- folding
 vim.o.foldmethod = 'expr'
