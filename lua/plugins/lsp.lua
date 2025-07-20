@@ -40,12 +40,12 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		bufmap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>')
 		bufmap('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>')
 		bufmap('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>')
-		bufmap('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>')
+		bufmap('n', '<F4>', '<cmd>lua require("tiny-code-action").code_action()<cr>')
 		bufmap('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>')
 		bufmap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>')
 		bufmap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>')
 
-		-- make sure there is at least one client with formatting capabilities
+		-- Make sure there is at least one client with formatting capabilities
 		if client.supports_method('textDocument/formatting') then
 			buffer_autoformat(event.buf)
 		end
@@ -116,7 +116,16 @@ return {
 	},
 	{
 		'folke/trouble.nvim',
-		opts = {}, -- for default options, refer to the configuration section for custom setup.
+		opts = {}, -- For default options, refer to the configuration section for custom setup.
 		cmd = 'Trouble',
+	},
+	{
+		'rachartier/tiny-code-action.nvim',
+		event = 'LspAttach',
+		opts = {
+			picker = {
+				'buffer',
+			},
+		},
 	},
 }
