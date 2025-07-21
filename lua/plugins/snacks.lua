@@ -28,6 +28,7 @@ return {
 			sources = {
 				explorer = {
 					focus = 'input',
+					watch = false,
 				},
 			},
 		},
