@@ -25,9 +25,12 @@ return {
 		},
 		picker = {
 			enabled = true,
-			explorer = {
-				watch = false,
-			}
+			sources = {
+				explorer = {
+					watch = false,
+					focus = 'input',
+				},
+			},
 		},
 		notifier = { enabled = true },
 		quickfile = { enabled = true },
