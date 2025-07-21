@@ -6,13 +6,13 @@ return {
 	opts = {
 		options = {
 			offsets = {
+				-- {
+				-- 	filetype = 'DiffviewFiles',
+				-- 	text = 'Diff View',
+				-- },
 				{
-					filetype = 'neo-tree',
-					text = 'Neo Tree',
-				},
-				{
-					filetype = 'DiffviewFiles',
-					text = 'Diff View',
+					filetype = 'snacks_layout_box',
+					text = 'Snacks Picker',
 				},
 			},
 			diagnostics = 'nvim_lsp',
