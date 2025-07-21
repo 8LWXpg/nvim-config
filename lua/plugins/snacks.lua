@@ -27,7 +27,6 @@ return {
 			enabled = true,
 			sources = {
 				explorer = {
-					watch = false,
 					focus = 'input',
 				},
 			},
