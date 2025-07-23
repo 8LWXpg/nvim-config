@@ -1,3 +1,7 @@
+vim.api.nvim_create_user_command('Explorer', function()
+	Snacks.explorer()
+end, {})
+
 return {
 	'folke/snacks.nvim',
 	priority = 1000,
