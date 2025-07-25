@@ -1,17 +1,33 @@
-vim.o.showmatch = true          -- show matching
-vim.o.ignorecase = true         -- case insensitive
-vim.o.hlsearch = true           -- highlight search
-vim.o.incsearch = true          -- incremental search
-vim.o.tabstop = 4               -- number of columns occupied by a tab
-vim.o.shiftwidth = 4            -- width for autoindents
-vim.o.autoindent = true         -- indent a new line the same amount as the line just typed
-vim.o.mouse = 'a'               -- enable mouse click
-vim.o.clipboard = 'unnamedplus' -- using system clipboard
+vim.o.showmatch = true          -- Show matching
+vim.o.ignorecase = true         -- Case insensitive
+vim.o.hlsearch = true           -- Highlight search
+vim.o.incsearch = true          -- Incremental search
+vim.o.tabstop = 4               -- Number of columns occupied by a tab
+vim.o.shiftwidth = 4            -- Width for astringents
+vim.o.autoindent = true         -- Indent a newline the same amount as the line just typed
+vim.o.mouse = 'a'               -- Enable mouse click
+vim.o.clipboard = 'unnamedplus' -- Using system clipboard
 vim.o.ttyfast = true            -- Speed up scrolling in Vim
-vim.o.swapfile = false          -- disable creating swap file
+vim.o.swapfile = false          -- Disable creating swap file
+vim.o.wrap = false              -- no line wrap
+vim.o.fileformat = 'unix'       -- Set default line ending to LF
+vim.o.fileformats = 'unix,dos'
 vim.o.winborder = 'rounded'
+vim.o.autoread = true
+vim.o.sidescroll = 4
 
--- folding
+vim.opt.whichwrap:append('<>hl')
+vim.opt.fillchars:append({ diff = '╱' })
+
+vim.wo.number = true     -- add line numbers
+vim.wo.relativenumber = true
+vim.wo.cursorline = true -- highlight current line
+
+-- Disable netrw completely
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+-- Folding
 vim.o.foldmethod = 'expr'
 vim.o.foldlevel = 99
 -- Default to treesitter folding
@@ -26,21 +42,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		end
 	end,
 })
-
-vim.wo.number = true        -- add line numbers
-vim.wo.relativenumber = true
-vim.wo.cursorline = true    -- highlight current cursorline
-
-vim.opt.fileformat = 'unix' -- Set default line ending to LF
-vim.opt.fileformats = 'unix,dos'
-vim.opt.whichwrap:append('<>hl')
-vim.opt.autoread = true
-vim.opt.wrap = false -- no line wrap
-vim.opt.fillchars:append { diff = '╱' }
-
--- Disable netrw completely
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
 
 -- Show a message when the file is changed on disk and reloaded
 vim.api.nvim_create_autocmd('FileChangedShellPost', {
@@ -63,7 +64,7 @@ vim.api.nvim_create_autocmd('BufWritePre', {
 	desc = 'Convert CRLF to LF on save',
 })
 
--- retrive cursor style after leave
+-- Retrive cursor style after leave
 vim.api.nvim_create_autocmd('VimLeave', {
 	pattern = '*',
 	callback = function()
@@ -98,6 +99,6 @@ if (os.getenv('SSH_TTY') ~= nil) then
 	}
 end
 
--- this have to set before loading lazy
+-- This have to set before loading lazy
 require('config.lazy')
 require('keymaps')
