@@ -5,10 +5,10 @@ return {
 	opts = {
 		options = {
 			offsets = {
-				-- {
-				-- 	filetype = 'DiffviewFiles',
-				-- 	text = 'Diff View',
-				-- },
+				{
+					filetype = 'DiffviewFiles',
+					text = 'Diff View',
+				},
 				{
 					filetype = 'snacks_layout_box',
 					text = 'Snacks Picker',
