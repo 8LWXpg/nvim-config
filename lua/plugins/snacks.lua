@@ -1,6 +1,9 @@
 vim.api.nvim_create_user_command('Explorer', function()
 	Snacks.explorer()
 end, {})
+vim.api.nvim_create_user_command('LazyGit', function()
+	Snacks.lazygit()
+end, {})
 
 return {
 	'folke/snacks.nvim',

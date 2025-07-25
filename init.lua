@@ -15,7 +15,7 @@ vim.o.winborder = 'rounded'
 vim.o.foldmethod = 'expr'
 vim.o.foldlevel = 99
 -- Default to treesitter folding
-vim.o.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 -- Prefer LSP folding if client supports it
 vim.api.nvim_create_autocmd('LspAttach', {
 	callback = function(args)
