@@ -4,6 +4,7 @@ return {
 	lazy = false,
 	build = ':TSUpdate',
 	config = function()
+		-- Auto enable installed parser
 		vim.api.nvim_create_autocmd('FileType', {
 			callback = function()
 				local filetype = vim.bo.filetype
