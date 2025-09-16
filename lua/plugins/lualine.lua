@@ -6,6 +6,8 @@ return {
 			disabled_filetypes = {
 				statusline = { 'neo-tree', 'DiffviewFiles' },
 			},
+			component_separators = '|',
+			section_separators = { left = '', right = '' },
 		},
 		sections = {
 			lualine_c = {
@@ -16,6 +18,5 @@ return {
 				},
 			},
 		},
-
 	},
 }
