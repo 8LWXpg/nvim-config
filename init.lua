@@ -92,10 +92,6 @@ if (os.getenv('SSH_TTY') ~= nil) then
 			['+'] = require('vim.ui.clipboard.osc52').copy('+'),
 			['*'] = require('vim.ui.clipboard.osc52').copy('*'),
 		},
-		paste = {
-			['+'] = vim.fn['provider#clipboard#paste'],
-			['*'] = vim.fn['provider#clipboard#paste'],
-		},
 	}
 end
 
