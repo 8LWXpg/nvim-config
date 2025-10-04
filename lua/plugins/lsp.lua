@@ -32,13 +32,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		end
 
 		bufmap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>')
-		bufmap('n', 'gc', '<cmd>lua vim.lsp.buf.code_action()<cr>')
-		bufmap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>')
-		bufmap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>')
-		bufmap('n', 'gI', '<cmd>lua vim.lsp.buf.implementation()<cr>')
-		bufmap('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>')
-		bufmap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>')
-		bufmap('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>')
 		bufmap('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>')
 		bufmap('n', '<F4>', '<cmd>lua require("tiny-code-action").code_action()<cr>')
 		bufmap('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>')
@@ -112,11 +105,6 @@ return {
 				},
 			},
 		},
-	},
-	{
-		'folke/trouble.nvim',
-		opts = {}, -- For default options, refer to the configuration section for custom setup.
-		cmd = 'Trouble',
 	},
 	{
 		'rachartier/tiny-code-action.nvim',

@@ -23,7 +23,7 @@ return {
 		end,
 		config = true,
 	},
-	{ 'echasnovski/mini.pairs',    version = '*', config = true },
 	{ 'nmac427/guess-indent.nvim', config = true },
+	{ 'echasnovski/mini.pairs',    version = '*', config = true },
 	{ 'echasnovski/mini.surround', version = '*', config = true },
 }
