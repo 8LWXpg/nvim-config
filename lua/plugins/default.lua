@@ -2,7 +2,7 @@ return {
 	{
 		'OXY2DEV/markview.nvim',
 		version = '*',
-		ft = { 'markdown', 'typst', 'copilot-chat' },
+		ft = { 'markdown', 'typst' },
 		dependencies = {
 			'nvim-treesitter/nvim-treesitter',
 			'nvim-tree/nvim-web-devicons',
