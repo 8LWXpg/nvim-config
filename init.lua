@@ -15,6 +15,7 @@ vim.o.fileformats = 'unix,dos'
 vim.o.winborder = 'rounded'
 vim.o.autoread = true
 vim.o.sidescroll = 4
+vim.o.splitright = true -- Create split from right
 
 vim.opt.whichwrap:append('<>hl')
 vim.opt.fillchars:append({ diff = '╱' })
@@ -28,8 +29,10 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 -- Folding
-vim.o.foldmethod = 'expr'
+vim.o.foldcolumn = '0'
 vim.o.foldlevel = 99
+vim.o.foldlevelstart = 99
+vim.o.foldmethod = 'expr'
 -- Default to treesitter folding
 vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 -- Prefer LSP folding if client supports it

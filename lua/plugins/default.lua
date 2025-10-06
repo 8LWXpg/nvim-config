@@ -1,13 +1,9 @@
+-- Some small utility plugins
 return {
 	{
-		'OXY2DEV/markview.nvim',
-		version = '*',
-		ft = { 'markdown', 'typst' },
-		dependencies = {
-			'nvim-treesitter/nvim-treesitter',
-			'nvim-tree/nvim-web-devicons',
-			'saghen/blink.cmp',
-		},
+		'kevinhwang91/nvim-ufo',
+		dependencies = 'kevinhwang91/promise-async',
+		opts = {},
 	},
 	{
 		'RaafatTurki/hex.nvim',

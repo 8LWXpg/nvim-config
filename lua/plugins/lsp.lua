@@ -27,16 +27,20 @@ vim.api.nvim_create_autocmd('LspAttach', {
 			return
 		end
 
-		local bufmap = function(mode, lhs, rhs)
-			vim.keymap.set(mode, lhs, rhs, { buffer = true })
+		local keymap = function(mode, lhs, rhs, desc)
+			vim.keymap.set(mode, lhs, rhs, { buffer = true, desc = desc })
 		end
 
-		bufmap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>')
-		bufmap('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>')
-		bufmap('n', '<F4>', '<cmd>lua require("tiny-code-action").code_action()<cr>')
-		bufmap('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>')
-		bufmap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>')
-		bufmap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>')
+		keymap('n', 'K', function()
+			if not require('ufo').peekFoldedLinesUnderCursor() then
+				vim.lsp.buf.hover()
+			end
+		end, 'Peek Fold or LSP Hover')
+		keymap('n', '<F2>', vim.lsp.buf.rename, 'LSP Rename')
+		keymap('n', '<F4>', function() require('tiny-code-action').code_action({}) end, 'LSP Code Action')
+		keymap('n', 'gl', vim.diagnostic.open_float, 'Show Diagnostics')
+		keymap('n', '[d', vim.diagnostic.goto_prev, 'Previous Diagnostic')
+		keymap('n', ']d', vim.diagnostic.goto_next, 'Next Diagnostic')
 
 		-- Make sure there is at least one client with formatting capabilities
 		if client.supports_method('textDocument/formatting') then
