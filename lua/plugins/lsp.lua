@@ -96,9 +96,9 @@ return {
 			},
 			sources = {
 				default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer' },
-				per_filetype = {
-					markdown = { 'markview' },
-				},
+				-- per_filetype = {
+				-- 	markdown = { 'markview' },
+				-- },
 				providers = {
 					lazydev = {
 						name = 'LazyDev',
@@ -116,6 +116,11 @@ return {
 		opts = {
 			picker = {
 				'buffer',
+				opts = {
+					keymaps = {
+						close = { 'q', '<Esc>' },
+					},
+				},
 			},
 		},
 	},

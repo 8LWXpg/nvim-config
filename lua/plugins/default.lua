@@ -20,6 +20,6 @@ return {
 		config = true,
 	},
 	{ 'nmac427/guess-indent.nvim', config = true },
-	{ 'echasnovski/mini.pairs',    version = '*', config = true },
-	{ 'echasnovski/mini.surround', version = '*', config = true },
+	{ 'nvim-mini/mini.pairs',      version = '*', config = true },
+	{ 'nvim-mini/mini.surround',   version = '*', config = true },
 }
