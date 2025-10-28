@@ -4,6 +4,13 @@ return {
 		'kevinhwang91/nvim-ufo',
 		dependencies = 'kevinhwang91/promise-async',
 		opts = {},
+		keymaps = {
+			{ 'K', function()
+				if not require('ufo').peekFoldedLinesUnderCursor() then
+					vim.lsp.buf.hover()
+				end
+			end, 'Peek Fold or LSP Hover' },
+		},
 	},
 	{
 		'RaafatTurki/hex.nvim',

@@ -1,12 +1,9 @@
-local keyset = vim.api.nvim_set_keymap
+local keyset = vim.keymap.set
 
--- Ctrl-Backspace -> delete word
-keyset('i', '<C-H>', '<C-w>', { noremap = true, silent = true })
--- Ctrl-Delete -> forward delete word
-keyset('i', '<C-Delete>', '<C-o>dw', { noremap = true, silent = true })
--- Move selected lines down
-keyset('v', 'J', ":m '>+1<CR>gv=gv", { noremap = true, silent = true })
--- Move selected lines up
-keyset('v', 'K', ":m '<-2<CR>gv=gv", { noremap = true, silent = true })
--- Ctrl-Shift-V -> V-Block
-keyset('n', '<C-S-v>', '<C-v>', { noremap = true })
+keyset('i', '<C-H>', '<C-w>', { desc = 'Delete word' })
+keyset('i', '<C-Delete>', '<C-o>dw', { desc = 'Forward delete word' })
+keyset('v', 'J', ":m '>+1<CR>gv=gv", { desc = 'Move selected lines down' })
+keyset('v', 'K', ":m '<-2<CR>gv=gv", { desc = 'Move selected lines up' })
+keyset('n', '<C-S-v>', '<C-v>', { desc = 'V-Block' })
+keyset('n', '<F2>', vim.lsp.buf.rename, { desc = 'LSP Rename' })
+keyset('n', 'gl', vim.diagnostic.open_float, { desc = 'Show Diagnostics' })

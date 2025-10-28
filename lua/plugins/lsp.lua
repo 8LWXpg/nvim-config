@@ -23,29 +23,15 @@ vim.api.nvim_create_autocmd('LspAttach', {
 	callback = function(event)
 		local id = vim.tbl_get(event, 'data', 'client_id')
 		local client = id and vim.lsp.get_client_by_id(id)
-		if client == nil then
-			return
-		end
+		if client == nil then return end
 
-		local keymap = function(mode, lhs, rhs, desc)
-			vim.keymap.set(mode, lhs, rhs, { buffer = true, desc = desc })
-		end
-
-		keymap('n', 'K', function()
-			if not require('ufo').peekFoldedLinesUnderCursor() then
-				vim.lsp.buf.hover()
+		-- Wait for dynamic capabilities
+		vim.defer_fn(function()
+			-- Make sure there is at least one client with formatting capabilities
+			if client.supports_method('textDocument/formatting') then
+				buffer_autoformat(event.buf)
 			end
-		end, 'Peek Fold or LSP Hover')
-		keymap('n', '<F2>', vim.lsp.buf.rename, 'LSP Rename')
-		keymap('n', '<F4>', function() require('tiny-code-action').code_action({}) end, 'LSP Code Action')
-		keymap('n', 'gl', vim.diagnostic.open_float, 'Show Diagnostics')
-		keymap('n', '[d', vim.diagnostic.goto_prev, 'Previous Diagnostic')
-		keymap('n', ']d', vim.diagnostic.goto_next, 'Next Diagnostic')
-
-		-- Make sure there is at least one client with formatting capabilities
-		if client.supports_method('textDocument/formatting') then
-			buffer_autoformat(event.buf)
-		end
+		end, 100)
 	end,
 })
 
@@ -60,7 +46,7 @@ return {
 	{
 		'mason-org/mason.nvim',
 		version = '2.*',
-		config = true,
+		opts = {},
 	},
 	{
 		'neovim/nvim-lspconfig',
@@ -112,7 +98,6 @@ return {
 	},
 	{
 		'rachartier/tiny-code-action.nvim',
-		event = 'LspAttach',
 		opts = {
 			picker = {
 				'buffer',
@@ -122,6 +107,9 @@ return {
 					},
 				},
 			},
+		},
+		keys = {
+			{ '<F4>', function() require('tiny-code-action').code_action({}) end, 'LSP Code Action' },
 		},
 	},
 }
