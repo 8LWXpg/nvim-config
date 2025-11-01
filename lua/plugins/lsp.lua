@@ -73,7 +73,10 @@ return {
 				accept = { auto_brackets = { enabled = false } },
 				documentation = { auto_show = true },
 			},
-			keymap = { preset = 'super-tab' },
+			keymap = {
+				preset = 'super-tab',
+				['<C-space>'] = { 'show', 'hide' },
+			},
 			cmdline = {
 				completion = {
 					menu = { auto_show = true },
@@ -82,10 +85,10 @@ return {
 			},
 			sources = {
 				default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer' },
-				-- per_filetype = {
-				-- 	markdown = { 'markview' },
-				-- },
 				providers = {
+					lsp = {
+						min_keyword_length = 0,
+					},
 					lazydev = {
 						name = 'LazyDev',
 						module = 'lazydev.integrations.blink',

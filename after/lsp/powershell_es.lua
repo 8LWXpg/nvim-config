@@ -3,10 +3,12 @@ return {
 		powershell = {
 			codeFormatting = {
 				autoCorrectAliases = true,
-				newLineAfterCloseBrace = false,
+				avoidSemicolonsAsLineTerminators = true,
 				pipelineIndentationStyle = 'IncreaseIndentationForFirstPipeline',
+				preset = 'OTBS',
 				trimWhitespaceAroundPipe = true,
 				useConstantStrings = true,
+				useCorrectCasing = true,
 				whitespaceBetweenParameters = true,
 			},
 		},
