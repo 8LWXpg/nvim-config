@@ -1,19 +1,16 @@
 vim.o.showmatch = true          -- Show matching
 vim.o.ignorecase = true         -- Case insensitive
-vim.o.hlsearch = true           -- Highlight search
 vim.o.incsearch = true          -- Incremental search
 vim.o.tabstop = 4               -- Number of columns occupied by a tab
 vim.o.shiftwidth = 4            -- Width for astringents
 vim.o.autoindent = true         -- Indent a newline the same amount as the line just typed
 vim.o.mouse = 'a'               -- Enable mouse click
 vim.o.clipboard = 'unnamedplus' -- Using system clipboard
-vim.o.ttyfast = true            -- Speed up scrolling in Vim
 vim.o.swapfile = false          -- Disable creating swap file
 vim.o.wrap = false              -- no line wrap
 vim.o.fileformat = 'unix'       -- Set default line ending to LF
 vim.o.fileformats = 'unix,dos'
 vim.o.winborder = 'rounded'
-vim.o.autoread = true
 vim.o.sidescroll = 4
 vim.o.splitright = true -- Create split from right
 
@@ -33,7 +30,7 @@ vim.o.foldcolumn = '0'
 vim.o.foldlevel = 99
 vim.o.foldlevelstart = 99
 vim.o.foldmethod = 'expr'
--- Default to treesitter folding
+-- Default to Tree-sitter folding
 vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 -- Prefer LSP folding if client supports it
 vim.api.nvim_create_autocmd('LspAttach', {
@@ -67,16 +64,20 @@ vim.api.nvim_create_autocmd('BufWritePre', {
 	desc = 'Convert CRLF to LF on save',
 })
 
--- Retrive cursor style after leave
+-- Retrieve cursor style after leave
 vim.api.nvim_create_autocmd('VimLeave', {
 	pattern = '*',
 	callback = function()
 		vim.opt.guicursor = ''
-		vim.fn.chansend(vim.v.stderr, '\x1b[ q')
+		-- vim.fn.chansend(vim.v.stderr, '\x1b[0 q')
+		pcall(function()
+			io.stdout:write('\x1b[0 q')
+			io.stdout:flush()
+		end)
 	end,
 })
 
--- pwsh settings on Windows
+-- PowerShell settings on Windows
 if jit.os == 'Windows' then
 	vim.opt.shell = 'pwsh.exe'
 	vim.o.shellcmdflag =
