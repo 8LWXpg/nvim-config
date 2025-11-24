@@ -21,5 +21,6 @@ return {
 			auto_fold = true,
 			auto_insert_mode = true,
 		},
+		cmd = 'CopilotChatOpen',
 	},
 }
