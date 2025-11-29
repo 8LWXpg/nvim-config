@@ -106,18 +106,6 @@ if (os.getenv('SSH_TTY') ~= nil) then
 			['*'] = vim_paste,
 		},
 	}
-elseif (os.getenv('WSLENV') ~= nil) then
-	vim.g.clipboard = {
-		name = 'WslClipboard',
-		copy = {
-			['+'] = 'clip.exe',
-			['*'] = 'clip.exe',
-		},
-		paste = {
-			['+'] = 'pwsh.exe -nop -c [Console]::Out.Write((Get-Clipboard -Raw).replace("`r", ""))',
-			['*'] = 'pwsh.exe -nop -c [Console]::Out.Write((Get-Clipboard -Raw).replace("`r", ""))',
-		},
-	}
 end
 
 -- This have to set before loading lazy

@@ -1,0 +1,4 @@
+return {
+	'bkoropoff/clipipe',
+	opts = {},
+}
