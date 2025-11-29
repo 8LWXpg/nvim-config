@@ -89,7 +89,7 @@ if jit.os == 'Windows' then
 end
 
 -- Force OSC52 on remote
-if (os.getenv('SSH_TTY') ~= nil) then
+if os.getenv('SSH_TTY') ~= nil then
 	local function vim_paste()
 		local content = vim.fn.getreg '"'
 		return vim.split(content, '\n')
