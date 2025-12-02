@@ -18,7 +18,7 @@ return {
 			workspace = {
 				checkThirdParty = false,
 				library = {
-					os.getenv('VIMRUNTIME'),
+					vim.env.VIMRUNTIME,
 				},
 			},
 		}
