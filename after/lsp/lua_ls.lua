@@ -1,12 +1,6 @@
 return {
 	settings = {
 		Lua = {
-			runtime = {
-				version = 'LuaJIT',
-			},
-			diagnostics = {
-				globals = { 'vim', 'require' },
-			},
 			format = {
 				defaultConfig = {
 					indent_style = 'tab',
@@ -15,12 +9,6 @@ return {
 					trailing_table_separator = 'smart',
 				},
 			},
-			workspace = {
-				checkThirdParty = false,
-				library = {
-					os.getenv('VIMRUNTIME'),
-				},
-			},
-		}
-	}
+		},
+	},
 }
