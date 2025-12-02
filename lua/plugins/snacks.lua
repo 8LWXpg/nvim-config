@@ -35,7 +35,6 @@ return {
 			enabled = true,
 			sources = {
 				explorer = {
-					focus = true,
 					watch = false,
 				},
 			},
