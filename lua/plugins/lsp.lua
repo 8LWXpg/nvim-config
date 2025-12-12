@@ -41,16 +41,23 @@ return {
 	{
 		'mason-org/mason-lspconfig.nvim',
 		version = '2.*',
+		event = 'FileType',
+		dependencies = {
+			'mason-org/mason.nvim',
+			'neovim/nvim-lspconfig',
+		},
 		opts = {},
 	},
 	{
 		'mason-org/mason.nvim',
 		version = '2.*',
+		cmd = { 'Mason', 'MasonInstall', 'MasonUpdate' },
 		opts = {},
 	},
 	{
 		'neovim/nvim-lspconfig',
 		version = '2.*',
+		event = 'FileType',
 	},
 	{
 		'folke/lazydev.nvim',
@@ -67,6 +74,7 @@ return {
 	{
 		'saghen/blink.cmp',
 		version = '1.*',
+		event = { 'InsertEnter', 'CmdlineEnter' },
 		dependencies = { 'rafamadriz/friendly-snippets' },
 		opts = {
 			completion = {

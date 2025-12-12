@@ -3,6 +3,7 @@ return {
 	{
 		'kevinhwang91/nvim-ufo',
 		dependencies = 'kevinhwang91/promise-async',
+		event = 'BufReadPost',
 		opts = {},
 		keymaps = {
 			{ 'K', function()
@@ -18,15 +19,11 @@ return {
 		cond = vim.o.binary,
 		init = function()
 			-- Auto-load in binary mode (nvim -b)
-			vim.api.nvim_create_autocmd('BufReadPost', {
-				callback = function()
-					require('hex').dump()
-				end,
-			})
+			vim.api.nvim_create_autocmd('BufReadPost', { callback = function() require('hex').dump() end })
 		end,
 		config = true,
 	},
-	{ 'nmac427/guess-indent.nvim', config = true },
-	{ 'nvim-mini/mini.pairs',      version = '*', config = true },
-	{ 'nvim-mini/mini.surround',   version = '*', config = true },
+	{ 'nmac427/guess-indent.nvim', event = 'BufReadPost', config = true },
+	{ 'nvim-mini/mini.pairs',      event = 'InsertEnter', version = '*', config = true },
+	{ 'nvim-mini/mini.surround',   event = 'BufReadPost', version = '*', config = true },
 }

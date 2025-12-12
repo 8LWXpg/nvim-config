@@ -1,3 +1,6 @@
+-- Experimental Lua module loader
+vim.loader.enable()
+
 vim.o.showmatch = true          -- Show matching
 vim.o.ignorecase = true         -- Case insensitive
 vim.o.incsearch = true          -- Incremental search
