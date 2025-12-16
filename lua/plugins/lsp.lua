@@ -41,7 +41,7 @@ return {
 	{
 		'mason-org/mason-lspconfig.nvim',
 		version = '2.*',
-		event = 'FileType',
+		event = 'BufReadPost',
 		dependencies = {
 			'mason-org/mason.nvim',
 			'neovim/nvim-lspconfig',
@@ -57,11 +57,11 @@ return {
 	{
 		'neovim/nvim-lspconfig',
 		version = '2.*',
-		event = 'FileType',
+		event = 'BufReadPost',
 	},
 	{
 		'folke/lazydev.nvim',
-		ft = 'lua', -- only load on lua files
+		ft = 'lua',
 		---@class lazydev.Config
 		opts = {
 			library = {
