@@ -39,7 +39,7 @@ vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 vim.api.nvim_create_autocmd('LspAttach', {
 	callback = function(args)
 		local client = vim.lsp.get_client_by_id(args.data.client_id)
-		if client:supports_method('textDocument/foldingRange') then
+		if client and client:supports_method('textDocument/foldingRange') then
 			local win = vim.api.nvim_get_current_win()
 			vim.wo[win][0].foldexpr = 'v:lua.vim.lsp.foldexpr()'
 		end
@@ -81,7 +81,7 @@ vim.api.nvim_create_autocmd('VimLeave', {
 })
 
 -- PowerShell settings on Windows
-if jit.os == 'Windows' then
+if vim.fn.has('window') then
 	vim.opt.shell = 'pwsh.exe'
 	vim.o.shellcmdflag =
 	"-nop -c [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new();$PSDefaultParameterValues['Out-File:Encoding']='utf8';$PSStyle.OutputRendering='plaintext';Remove-Alias -Force -ErrorAction SilentlyContinue tee;"
