@@ -41,7 +41,7 @@ return {
 	{
 		'mason-org/mason-lspconfig.nvim',
 		version = '2.*',
-		event = 'BufReadPost',
+		event = 'BufReadPre',
 		dependencies = {
 			'mason-org/mason.nvim',
 			'neovim/nvim-lspconfig',
@@ -57,7 +57,7 @@ return {
 	{
 		'neovim/nvim-lspconfig',
 		version = '2.*',
-		event = 'BufReadPost',
+		event = 'BufReadPre',
 	},
 	{
 		'folke/lazydev.nvim',
