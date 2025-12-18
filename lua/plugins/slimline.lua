@@ -19,6 +19,6 @@ return {
 				},
 			},
 		},
-		disabled_filetypes = { 'snacks_layout_box', 'snacks_picker_list', 'copilot-chat', 'DiffviewFiles' },
+		disabled_filetypes = { 'snacks_layout_box', 'copilot-chat', 'DiffviewFiles' },
 	},
 }

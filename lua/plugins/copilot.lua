@@ -14,12 +14,11 @@ return {
 		},
 		---@type CopilotChat.config
 		opts = {
-			model = 'claude-sonnet-4',
+			model = 'claude-sonnet-4.5',
 			window = {
 				width = .4,
 			},
 			auto_fold = true,
-			auto_insert_mode = true,
 		},
 		cmd = { 'CopilotChatOpen', 'CopilotChatFix' },
 	},
