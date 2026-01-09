@@ -15,7 +15,6 @@ return {
 	},
 	{
 		'RaafatTurki/hex.nvim',
-		cmd = { 'HexToggle' },
 		cond = vim.o.binary,
 		init = function()
 			-- Auto-load in binary mode (nvim -b)

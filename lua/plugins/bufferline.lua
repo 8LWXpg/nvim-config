@@ -7,7 +7,7 @@ return {
 		options = {
 			offsets = {
 				{
-					filetype = 'DiffviewFiles',
+					filetype = 'codediff-explorer',
 					text = 'Diff View',
 				},
 				{
