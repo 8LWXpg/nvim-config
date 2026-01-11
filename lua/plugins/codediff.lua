@@ -1,5 +1,6 @@
 return {
 	'esmuellert/codediff.nvim',
 	dependencies = { 'MunifTanjim/nui.nvim' },
+	version = '*',
 	cmd = 'CodeDiff',
 }
