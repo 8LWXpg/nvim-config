@@ -75,7 +75,7 @@ return {
 		'saghen/blink.cmp',
 		version = '1.*',
 		event = { 'InsertEnter', 'CmdlineEnter' },
-		dependencies = { 'rafamadriz/friendly-snippets' },
+		dependencies = { '8LWXpg/friendly-snippets' },
 		opts = {
 			completion = {
 				accept = { auto_brackets = { enabled = false } },
