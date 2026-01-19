@@ -60,7 +60,7 @@ vim.api.nvim_create_autocmd('BufWritePre', {
 	callback = function()
 		if vim.bo.fileformat == 'dos' then
 			vim.bo.fileformat = 'unix'
-		elseif vim.fn.has('windows') then
+		elseif vim.fn.has('win32') ~= 0 then
 			vim.fn.execute('%s/\\r//g', 'silent!')
 		end
 	end,
@@ -81,7 +81,7 @@ vim.api.nvim_create_autocmd('VimLeave', {
 })
 
 -- PowerShell settings on Windows
-if vim.fn.has('win32') then
+if vim.fn.has('win32') ~= 0 then
 	vim.opt.shell = 'pwsh.exe'
 	vim.o.shellcmdflag =
 	"-nop -c [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new();$PSDefaultParameterValues['Out-File:Encoding']='utf8';$PSStyle.OutputRendering='plaintext';Remove-Alias -Force -ErrorAction SilentlyContinue tee;"
