@@ -6,6 +6,7 @@ return {
 	opts = {
 		explorer = {
 			width = 30,
+			initial_focus = 'modified',
 		},
 	},
 }
