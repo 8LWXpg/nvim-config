@@ -3,4 +3,9 @@ return {
 	dependencies = { 'MunifTanjim/nui.nvim' },
 	version = '*',
 	cmd = 'CodeDiff',
+	opts = {
+		explorer = {
+			width = 30,
+		},
+	},
 }
