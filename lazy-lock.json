@@ -2,6 +2,7 @@
   "CopilotChat.nvim": { "branch": "main", "commit": "07dcc188bc488b2dafa9324bd42088640bee3d19" },
   "blink.cmp": { "branch": "main", "commit": "b19413d214068f316c78978b08264ed1c41830ec" },
   "bufferline.nvim": { "branch": "main", "commit": "655133c3b4c3e5e05ec549b9f8cc2894ac6f51b3" },
+  "catppuccin": { "branch": "main", "commit": "beaf41a30c26fd7d6c386d383155cbd65dd554cd" },
   "clipipe": { "branch": "master", "commit": "3f10a85d016136a71976d973e6bd7769b0bf4e4e" },
   "codediff.nvim": { "branch": "main", "commit": "8a785f0cb4e721c2e07bfc303f7fc2d3513a6cfb" },
   "friendly-snippets": { "branch": "main", "commit": "48f0201a3fbd15a3f0f213467b256683514aa338" },
