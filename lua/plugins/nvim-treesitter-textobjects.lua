@@ -84,14 +84,6 @@ return {
 			desc = 'Next class start',
 		},
 		{
-			'[[',
-			function()
-				require('nvim-treesitter-textobjects.move').goto_previous_start('@class.outer', 'textobjects')
-			end,
-			mode = { 'n', 'x', 'o' },
-			desc = 'Previous class start',
-		},
-		{
 			'][',
 			function()
 				require('nvim-treesitter-textobjects.move').goto_next_end('@class.outer', 'textobjects')
@@ -100,12 +92,44 @@ return {
 			desc = 'Next class end',
 		},
 		{
+			'[[',
+			function()
+				require('nvim-treesitter-textobjects.move').goto_previous_start('@class.outer', 'textobjects')
+			end,
+			mode = { 'n', 'x', 'o' },
+			desc = 'Previous class start',
+		},
+		{
 			'[]',
 			function()
 				require('nvim-treesitter-textobjects.move').goto_previous_end('@class.outer', 'textobjects')
 			end,
 			mode = { 'n', 'x', 'o' },
 			desc = 'Previous class end',
+		},
+		{
+			']s',
+			function() require('nvim-treesitter-textobjects.move').goto_next_start('@local.scope', 'locals') end,
+			mode = { 'n', 'x', 'o' },
+			desc = 'Next scope start',
+		},
+		{
+			'[s',
+			function() require('nvim-treesitter-textobjects.move').goto_previous_start('@local.scope', 'locals') end,
+			mode = { 'n', 'x', 'o' },
+			desc = 'Previous scope start',
+		},
+		{
+			']S',
+			function() require('nvim-treesitter-textobjects.move').goto_next_end('@local.scope', 'locals') end,
+			mode = { 'n', 'x', 'o' },
+			desc = 'Next scope end',
+		},
+		{
+			'[S',
+			function() require('nvim-treesitter-textobjects.move').goto_previous_end('@local.scope', 'locals') end,
+			mode = { 'n', 'x', 'o' },
+			desc = 'Previous scope end',
 		},
 	},
 }
