@@ -36,6 +36,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 vim.lsp.enable({ 'nixd', 'lua_ls' })
+vim.lsp.inlay_hint.enable()
 
 return {
 	{
