@@ -1,3 +1,5 @@
+vim.g.no_plugin_maps = true
+
 return {
 	'nvim-treesitter/nvim-treesitter-textobjects',
 	branch = 'main',
