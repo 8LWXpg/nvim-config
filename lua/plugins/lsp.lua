@@ -1,6 +1,6 @@
 -- Reserve a space in the gutter
 -- This will avoid an annoying layout shift in the screen
-vim.opt.signcolumn = 'yes'
+vim.opt.signcolumn = 'number'
 vim.diagnostic.config({ virtual_text = true })
 
 local buffer_autoformat = function(bufnr)
