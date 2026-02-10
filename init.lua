@@ -46,13 +46,16 @@ vim.api.nvim_create_autocmd('LspAttach', {
 	end,
 })
 
--- Set diagnostic symbol
-local symbols = { Error = '󰅙', Info = '󰋼', Hint = '󰌵', Warn = '' }
-
-for name, icon in pairs(symbols) do
-	local hl = 'DiagnosticSign' .. name
-	vim.fn.sign_define(hl, { text = icon, numhl = hl, texthl = hl })
-end
+vim.diagnostic.config({
+	signs = {
+		text = {
+			[vim.diagnostic.severity.ERROR] = '󰅙',
+			[vim.diagnostic.severity.WARN] = '',
+			[vim.diagnostic.severity.HINT] = '󰌵',
+			[vim.diagnostic.severity.INFO] = '󰋼',
+		},
+	},
+})
 
 -- Show a message when the file is changed on disk and reloaded
 vim.api.nvim_create_autocmd('FileChangedShellPost', {

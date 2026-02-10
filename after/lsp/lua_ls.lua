@@ -1,6 +1,10 @@
 return {
 	settings = {
 		Lua = {
+			runtime = {
+				version = 'LuaJIT',
+				pathStrict = false,
+			},
 			format = {
 				defaultConfig = {
 					indent_style = 'tab',
