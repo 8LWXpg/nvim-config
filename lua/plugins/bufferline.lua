@@ -19,7 +19,7 @@ return {
 			show_close_icon = false,
 			show_buffer_close_icons = false,
 			enforce_regular_tabs = true,
-			right_mouse_command = false,
+			right_mouse_command = 'lua Snacks.bufdelete.other()',
 			middle_mouse_command = 'lua Snacks.bufdelete.delete(%d)',
 		},
 	},
