@@ -12,7 +12,7 @@ return {
 				},
 				{
 					filetype = 'snacks_layout_box',
-					text = 'Snacks Picker',
+					text = 'Snacks Explorer',
 				},
 			},
 			diagnostics = 'nvim_lsp',

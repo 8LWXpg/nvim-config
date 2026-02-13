@@ -1,6 +1,3 @@
-vim.api.nvim_create_user_command('Explorer', function()
-	Snacks.explorer()
-end, {})
 vim.api.nvim_create_user_command('LazyGit', function()
 	Snacks.lazygit()
 end, {})
@@ -19,7 +16,7 @@ return {
 					{ icon = ' ', key = 'n', desc = 'New File', action = ':ene | startinsert' },
 					{ icon = ' ', key = 'f', desc = 'Find File', action = ":lua Snacks.dashboard.pick('files')" },
 					{ icon = ' ', key = 'g', desc = 'Find Text', action = ":lua Snacks.dashboard.pick('live_grep')" },
-					{ icon = ' ', key = 'p', desc = 'Find Projects', action = ':ProjectSnacks' },
+					{ icon = ' ', key = 'p', desc = 'Find Projects', action = ':lua Snacks.picker.projects()' },
 					{ icon = ' ', key = 'r', desc = 'Recent Files', action = ":lua Snacks.dashboard.pick('oldfiles')" },
 					{ icon = ' ', key = 'c', desc = 'Config', action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})" },
 					{ icon = '󰒲 ', key = 'L', desc = 'Lazy', action = ':Lazy', enabled = package.loaded.lazy ~= nil },
@@ -50,6 +47,11 @@ return {
 					watch = false,
 				},
 			},
+			formatters = {
+				file = {
+					min_width = 30,
+				},
+			},
 		},
 		notifier = { enabled = true },
 		quickfile = { enabled = true },
@@ -63,8 +65,12 @@ return {
 
 		{ '<leader>,',  function() Snacks.picker.buffers() end,               desc = 'Buffers' },
 		{ '<leader>/',  function() Snacks.picker.grep() end,                  desc = 'Grep' },
+		{ '<leader>:',  function() Snacks.picker.command_history() end,       desc = 'Command History' },
+		{ '<leader>e',  function() Snacks.explorer() end,                     desc = 'File Explorer' },
 
 		{ '<leader>ff', function() Snacks.picker.files() end,                 desc = 'Find files' },
+		{ '<leader>fp', function() Snacks.picker.projects() end,              desc = 'Projects' },
+
 		{ '<leader>sk', function() Snacks.picker.keymaps() end,               desc = 'Keymaps' },
 		{ '<leader>sw', function() Snacks.picker.grep_word() end,             desc = 'Visual selection or word', mode = { 'n', 'x' } },
 		-- LSP
