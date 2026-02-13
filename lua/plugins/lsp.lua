@@ -45,7 +45,11 @@ return {
 		event = { 'BufReadPre', 'BufNewFile' },
 		dependencies = {
 			'mason-org/mason.nvim',
-			'neovim/nvim-lspconfig',
+			{
+				'neovim/nvim-lspconfig',
+				version = '2.*',
+				event = { 'BufReadPre', 'BufNewFile' },
+			},
 		},
 		opts = {},
 	},
@@ -54,11 +58,6 @@ return {
 		version = '2.*',
 		cmd = { 'Mason', 'MasonInstall', 'MasonUpdate' },
 		opts = {},
-	},
-	{
-		'neovim/nvim-lspconfig',
-		version = '2.*',
-		event = { 'BufReadPre', 'BufNewFile' },
 	},
 	{
 		'folke/lazydev.nvim',
@@ -76,8 +75,22 @@ return {
 		'saghen/blink.cmp',
 		version = '1.*',
 		event = { 'InsertEnter', 'CmdlineEnter' },
-		dependencies = { '8LWXpg/friendly-snippets' },
+		dependencies = {
+			'nvim-mini/mini.snippets',
+			dependencies = 'rafamadriz/friendly-snippets',
+			opts = function()
+				return {
+					snippets = {
+						require('mini.snippets').gen_loader.from_lang(),
+					},
+					mappings = {
+						expand = '',
+					},
+				}
+			end,
+		},
 		opts = {
+			snippets = { preset = 'mini_snippets' },
 			completion = {
 				accept = { auto_brackets = { enabled = false } },
 				documentation = { auto_show = true },

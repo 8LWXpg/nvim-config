@@ -5,7 +5,7 @@ return {
 		dependencies = 'kevinhwang91/promise-async',
 		event = { 'BufReadPost', 'BufNewFile' },
 		opts = {},
-		keymaps = {
+		keys = {
 			{ 'K', function()
 				if not require('ufo').peekFoldedLinesUnderCursor() then
 					vim.lsp.buf.hover()
