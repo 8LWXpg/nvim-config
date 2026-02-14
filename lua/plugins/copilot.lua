@@ -16,7 +16,7 @@ return {
 		opts = {
 			model = 'claude-sonnet-4.5',
 			window = {
-				width = .4,
+				width = 0.4,
 			},
 			auto_fold = true,
 		},

@@ -28,9 +28,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		-- Wait for dynamic capabilities
 		vim.defer_fn(function()
 			-- Make sure there is at least one client with formatting capabilities
-			if client:supports_method('textDocument/formatting') then
-				buffer_autoformat(event.buf)
-			end
+			if client:supports_method('textDocument/formatting') then buffer_autoformat(event.buf) end
 		end, 100)
 	end,
 })
@@ -85,10 +83,10 @@ return {
 			completion = {
 				accept = { auto_brackets = { enabled = false } },
 				documentation = { auto_show = true },
+				list = { selection = { preselect = true, auto_insert = false } },
 			},
 			keymap = {
 				preset = 'super-tab',
-				['<C-space>'] = { 'show', 'hide' },
 			},
 			cmdline = {
 				completion = {
@@ -98,17 +96,7 @@ return {
 			},
 			sources = {
 				default = { 'lsp', 'path', 'snippets', 'buffer' },
-				providers = {
-					lsp = {
-						min_keyword_length = 0,
-					},
-					lazydev = {
-						name = 'LazyDev',
-						module = 'lazydev.integrations.blink',
-						-- Make lazydev completions top priority (see `:h blink.cmp`)
-						score_offset = 100,
-					},
-				},
+				providers = { lsp = { min_keyword_length = 0 } },
 			},
 		},
 	},
@@ -125,7 +113,11 @@ return {
 			},
 		},
 		keys = {
-			{ '<F4>', function() require('tiny-code-action').code_action({}) end, 'LSP Code Action' },
+			{
+				'<F4>',
+				function() require('tiny-code-action').code_action({}) end,
+				'LSP Code Action',
+			},
 		},
 	},
 }

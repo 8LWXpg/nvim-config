@@ -6,7 +6,5 @@ return {
 		flavour = 'mocha',
 		transparent_background = true,
 	},
-	init = function()
-		vim.cmd [[colorscheme catppuccin-mocha]]
-	end,
+	init = function() vim.cmd([[colorscheme catppuccin-mocha]]) end,
 }

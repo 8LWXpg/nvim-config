@@ -9,6 +9,6 @@ return {
 					trailing_table_separator = 'smart',
 				},
 			},
-		}
-	}
+		},
+	},
 }

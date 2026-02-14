@@ -1,17 +1,18 @@
 -- Experimental Lua module loader
 vim.loader.enable()
+vim.lsp.set_log_level('debug')
 
-vim.o.showmatch = true          -- Show matching
-vim.o.ignorecase = true         -- Case insensitive
-vim.o.incsearch = true          -- Incremental search
-vim.o.tabstop = 4               -- Number of columns occupied by a tab
-vim.o.shiftwidth = 4            -- Width for astringents
-vim.o.autoindent = true         -- Indent a newline the same amount as the line just typed
-vim.o.mouse = 'a'               -- Enable mouse click
+vim.o.showmatch = true -- Show matching
+vim.o.ignorecase = true -- Case insensitive
+vim.o.incsearch = true -- Incremental search
+vim.o.tabstop = 4 -- Number of columns occupied by a tab
+vim.o.shiftwidth = 4 -- Width for astringents
+vim.o.autoindent = true -- Indent a newline the same amount as the line just typed
+vim.o.mouse = 'a' -- Enable mouse click
 vim.o.clipboard = 'unnamedplus' -- Using system clipboard
-vim.o.swapfile = false          -- Disable creating swap file
-vim.o.wrap = false              -- no line wrap
-vim.o.fileformat = 'unix'       -- Set default line ending to LF
+vim.o.swapfile = false -- Disable creating swap file
+vim.o.wrap = false -- no line wrap
+vim.o.fileformat = 'unix' -- Set default line ending to LF
 vim.o.fileformats = 'unix,dos'
 vim.o.winborder = 'rounded'
 vim.o.sidescroll = 4
@@ -20,7 +21,7 @@ vim.o.splitright = true -- Create split from right
 vim.opt.whichwrap:append('<>hl')
 vim.opt.fillchars:append({ diff = '╱' })
 
-vim.wo.number = true     -- add line numbers
+vim.wo.number = true -- add line numbers
 vim.wo.relativenumber = true
 vim.wo.cursorline = true -- highlight current line
 
@@ -60,9 +61,7 @@ vim.diagnostic.config({
 -- Show a message when the file is changed on disk and reloaded
 vim.api.nvim_create_autocmd('FileChangedShellPost', {
 	pattern = '*',
-	callback = function()
-		vim.cmd('echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None')
-	end,
+	callback = function() vim.cmd('echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None') end,
 })
 
 -- Convert CRLF to LF on save
@@ -94,7 +93,7 @@ vim.api.nvim_create_autocmd('VimLeave', {
 if vim.fn.has('win32') ~= 0 then
 	vim.opt.shell = 'pwsh.exe'
 	vim.o.shellcmdflag =
-	"-nop -c [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new();$PSDefaultParameterValues['Out-File:Encoding']='utf8';$PSStyle.OutputRendering='plaintext';Remove-Alias -Force -ErrorAction SilentlyContinue tee;"
+		"-nop -c [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new();$PSDefaultParameterValues['Out-File:Encoding']='utf8';$PSStyle.OutputRendering='plaintext';Remove-Alias -Force -ErrorAction SilentlyContinue tee;"
 	vim.o.shellredir = '2>&1 | Join-String -Separator "`n" | Out-File -NoNewline %s; exit $LastExitCode'
 	vim.o.shellpipe = '2>&1 | Join-String -Separator "`n" | tee.exe %s; exit $LastExitCode'
 	vim.o.shellquote = ''
@@ -104,7 +103,7 @@ end
 -- Force OSC52 on remote
 if vim.env.SSH_TTY ~= nil then
 	local function vim_paste()
-		local content = vim.fn.getreg '"'
+		local content = vim.fn.getreg('"')
 		return vim.split(content, '\n')
 	end
 

@@ -11,9 +11,7 @@ return {
 				local lang = vim.treesitter.language.get_lang(filetype) or filetype
 				local installed = require('nvim-treesitter').get_installed()
 
-				if vim.tbl_contains(installed, lang) then
-					vim.treesitter.start()
-				end
+				if vim.tbl_contains(installed, lang) then vim.treesitter.start() end
 			end,
 		})
 	end,
