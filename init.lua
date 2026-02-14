@@ -83,7 +83,6 @@ vim.api.nvim_create_autocmd('VimLeave', {
 	pattern = '*',
 	callback = function()
 		vim.opt.guicursor = ''
-		-- vim.fn.chansend(vim.v.stderr, '\x1b[0 q')
 		pcall(function()
 			io.stdout:write('\x1b[0 q')
 			io.stdout:flush()

@@ -35,8 +35,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 	end,
 })
 
-vim.lsp.enable({ 'nixd', 'lua_ls' })
-vim.lsp.inlay_hint.enable()
+vim.lsp.enable({ 'nixd' })
 
 return {
 	{
@@ -60,16 +59,8 @@ return {
 		opts = {},
 	},
 	{
-		'folke/lazydev.nvim',
-		ft = 'lua',
-		---@class lazydev.Config
-		opts = {
-			library = {
-				'lazy.nvim',
-				-- Load luvit types when the `vim.uv` word is found
-				{ path = '${3rd}/luv/library', words = { 'vim%.uv' } },
-			},
-		},
+		'neovim/nvim-lspconfig',
+		version = '2.*',
 	},
 	{
 		'saghen/blink.cmp',
@@ -106,7 +97,7 @@ return {
 				keymap = { preset = 'inherit' },
 			},
 			sources = {
-				default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer' },
+				default = { 'lsp', 'path', 'snippets', 'buffer' },
 				providers = {
 					lsp = {
 						min_keyword_length = 0,
