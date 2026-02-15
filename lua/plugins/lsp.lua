@@ -78,12 +78,14 @@ return {
 				}
 			end,
 		},
+		---@type blink.cmp.Config
 		opts = {
 			snippets = { preset = 'mini_snippets' },
 			completion = {
 				accept = { auto_brackets = { enabled = false } },
 				documentation = { auto_show = true },
 				list = { selection = { preselect = true, auto_insert = false } },
+				menu = { draw = { treesitter = { 'lsp' } } },
 			},
 			keymap = {
 				preset = 'super-tab',

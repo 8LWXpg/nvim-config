@@ -89,6 +89,20 @@ vim.api.nvim_create_autocmd('VimLeave', {
 	end,
 })
 
+-- Store cwd path
+vim.api.nvim_create_autocmd('VimLeave', {
+	callback = function()
+		local tmp = vim.fn.getenv('NVIM_LAST_DIR_FILE')
+		if tmp ~= vim.NIL then
+			local file = io.open(tmp, 'w')
+			if file then
+				file:write(vim.fn.getcwd())
+				file:close()
+			end
+		end
+	end,
+})
+
 -- PowerShell settings on Windows
 if vim.fn.has('win32') ~= 0 then
 	vim.opt.shell = 'pwsh.exe'

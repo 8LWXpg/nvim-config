@@ -1,13 +1,22 @@
 return {
 	settings = {
-		lua = {
-			format = {
-				defaultConfig = {
-					indent_style = 'tab',
-					quote_style = 'single',
-					end_of_line = 'lf',
-					trailing_table_separator = 'smart',
+		Lua = {
+			diagnostics = {
+				disable = { 'missing-fields' },
+			},
+			runtime = {
+				version = 'LuaJIT',
+				requirePattern = {
+					'lua/?.lua',
+					'lua/?/init.lua',
+					'?/lua/?.lua',
+					'?/lua/?/init.lua',
 				},
+				frameworkVersions = { 'luv' },
+			},
+			workspace = {
+				library = vim.api.nvim_list_runtime_paths(),
+				ignoreGlobs = { '**/*_spec.lua' },
 			},
 		},
 	},
