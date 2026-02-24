@@ -1,6 +1,5 @@
 -- Experimental Lua module loader
 vim.loader.enable()
-vim.lsp.set_log_level('debug')
 
 vim.o.showmatch = true -- Show matching
 vim.o.ignorecase = true -- Case insensitive
@@ -19,7 +18,7 @@ vim.o.sidescroll = 4
 vim.o.splitright = true -- Create split from right
 
 vim.opt.whichwrap:append('<>hl')
-vim.opt.fillchars:append({ diff = '╱' })
+vim.opt.fillchars:append({ diff = '╱', foldopen = '', foldclose = '' })
 
 vim.wo.number = true -- add line numbers
 vim.wo.relativenumber = true

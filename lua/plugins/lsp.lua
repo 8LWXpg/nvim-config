@@ -1,5 +1,3 @@
--- Reserve a space in the gutter
--- This will avoid an annoying layout shift in the screen
 vim.opt.signcolumn = 'number'
 vim.diagnostic.config({ virtual_text = true })
 
@@ -33,7 +31,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 	end,
 })
 
-vim.lsp.enable({ 'nixd' })
+vim.lsp.enable({ 'nixd', 'stylua' })
 
 return {
 	{
@@ -53,7 +51,7 @@ return {
 	{
 		'mason-org/mason.nvim',
 		version = '2.*',
-		cmd = { 'Mason', 'MasonInstall', 'MasonUpdate' },
+		cmd = { 'Mason', 'MasonInstall', 'MasonUpdate', 'MasonUninstall' },
 		opts = {},
 	},
 	{
@@ -66,15 +64,12 @@ return {
 		event = { 'InsertEnter', 'CmdlineEnter' },
 		dependencies = {
 			'nvim-mini/mini.snippets',
+			version = '*',
 			dependencies = 'rafamadriz/friendly-snippets',
 			opts = function()
 				return {
-					snippets = {
-						require('mini.snippets').gen_loader.from_lang(),
-					},
-					mappings = {
-						expand = '',
-					},
+					snippets = { require('mini.snippets').gen_loader.from_lang() },
+					mappings = { expand = '' },
 				}
 			end,
 		},
@@ -87,13 +82,9 @@ return {
 				list = { selection = { preselect = true, auto_insert = false } },
 				menu = { draw = { treesitter = { 'lsp' } } },
 			},
-			keymap = {
-				preset = 'super-tab',
-			},
+			keymap = { preset = 'super-tab' },
 			cmdline = {
-				completion = {
-					menu = { auto_show = true },
-				},
+				completion = { menu = { auto_show = true } },
 				keymap = { preset = 'inherit' },
 			},
 			sources = {
@@ -105,6 +96,7 @@ return {
 	{
 		'rachartier/tiny-code-action.nvim',
 		opts = {
+			backend = 'delta',
 			picker = {
 				'buffer',
 				opts = {

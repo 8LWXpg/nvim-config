@@ -9,8 +9,6 @@ return {
 				requirePattern = {
 					'lua/?.lua',
 					'lua/?/init.lua',
-					'?/lua/?.lua',
-					'?/lua/?/init.lua',
 				},
 				frameworkVersions = { 'luv' },
 			},
