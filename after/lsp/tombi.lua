@@ -3,7 +3,7 @@ return {
 		tombi = {
 			format = {
 				rules = {
-					['string-quote-style'] = 'single',
+					-- ['string-quote-style'] = 'single',
 					['trailing-comment-alignment'] = true,
 				},
 			},

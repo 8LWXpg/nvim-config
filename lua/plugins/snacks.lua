@@ -80,7 +80,7 @@ return {
 	},
 	keys = {
 		{
-			'<C-_>',
+			'<C-/>',
 			function() Snacks.terminal() end,
 			desc = 'Open Terminal',
 		},
