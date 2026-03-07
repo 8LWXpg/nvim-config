@@ -88,7 +88,7 @@ return {
 				keymap = { preset = 'inherit' },
 			},
 			sources = {
-				default = { 'lsp', 'path', 'snippets', 'buffer' },
+				default = { 'snippets', 'lsp', 'path', 'buffer' },
 				providers = { lsp = { min_keyword_length = 0 } },
 			},
 		},
