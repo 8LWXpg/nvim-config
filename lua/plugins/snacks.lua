@@ -1,5 +1,3 @@
-vim.api.nvim_create_user_command('LazyGit', function() Snacks.lazygit() end, {})
-
 return {
 	'folke/snacks.nvim',
 	priority = 1000,
@@ -12,32 +10,11 @@ return {
 				keys = {
 					{ icon = ' ', key = 'n', desc = 'New File', action = ':ene | startinsert' },
 					{ icon = ' ', key = 'f', desc = 'Find File', action = ":lua Snacks.dashboard.pick('files')" },
-					{
-						icon = ' ',
-						key = 'g',
-						desc = 'Find Text',
-						action = ":lua Snacks.dashboard.pick('live_grep')",
-					},
+					{ icon = ' ', key = 'g', desc = 'Find Text', action = ":lua Snacks.dashboard.pick('live_grep')" },
 					{ icon = ' ', key = 'p', desc = 'Find Projects', action = ':lua Snacks.picker.projects()' },
-					{
-						icon = ' ',
-						key = 'r',
-						desc = 'Recent Files',
-						action = ":lua Snacks.dashboard.pick('oldfiles')",
-					},
-					{
-						icon = ' ',
-						key = 'c',
-						desc = 'Config',
-						action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})",
-					},
-					{
-						icon = '󰒲 ',
-						key = 'L',
-						desc = 'Lazy',
-						action = ':Lazy',
-						enabled = package.loaded.lazy ~= nil,
-					},
+					{ icon = ' ', key = 'r', desc = 'Recent Files', action = ":lua Snacks.dashboard.pick('oldfiles')" },
+					{ icon = ' ', key = 'c', desc = 'Config', action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})" },
+					{ icon = '󰒲 ', key = 'L', desc = 'Lazy', action = ':Lazy', enabled = package.loaded.lazy ~= nil },
 					{ icon = ' ', key = 'q', desc = 'Quit', action = ':qa' },
 				},
 			},
@@ -79,91 +56,27 @@ return {
 		words = { enabled = true },
 	},
 	keys = {
-		{
-			'<C-/>',
-			function() Snacks.terminal() end,
-			desc = 'Open Terminal',
-		},
+		{ '<C-/>', function() Snacks.terminal() end, desc = 'Open Terminal' },
 
-		{
-			'<leader>,',
-			function() Snacks.picker.buffers() end,
-			desc = 'Buffers',
-		},
-		{
-			'<leader>/',
-			function() Snacks.picker.grep() end,
-			desc = 'Grep',
-		},
-		{
-			'<leader>:',
-			function() Snacks.picker.command_history() end,
-			desc = 'Command History',
-		},
-		{
-			'<leader>e',
-			function() Snacks.explorer() end,
-			desc = 'File Explorer',
-		},
+		{ '<leader>,', function() Snacks.picker.buffers() end, desc = 'Buffers' },
+		{ '<leader>/', function() Snacks.picker.grep() end, desc = 'Grep' },
+		{ '<leader>:', function() Snacks.picker.command_history() end, desc = 'Command History' },
+		{ '<leader>e', function() Snacks.explorer() end, desc = 'File Explorer' },
 
-		{
-			'<leader>ff',
-			function() Snacks.picker.files() end,
-			desc = 'Find files',
-		},
-		{
-			'<leader>fp',
-			function() Snacks.picker.projects() end,
-			desc = 'Projects',
-		},
+		{ '<leader>ff', function() Snacks.picker.files() end, desc = 'Find files' },
+		{ '<leader>fp', function() Snacks.picker.projects() end, desc = 'Projects' },
 
-		{
-			'<leader>sk',
-			function() Snacks.picker.keymaps() end,
-			desc = 'Keymaps',
-		},
-		{
-			'<leader>sw',
-			function() Snacks.picker.grep_word() end,
-			desc = 'Visual selection or word',
-			mode = { 'n', 'x' },
-		},
+		{ '<leader>sk', function() Snacks.picker.keymaps() end, desc = 'Keymaps' },
+		{ '<leader>sw', function() Snacks.picker.grep_word() end, desc = 'Visual selection or word', mode = { 'n', 'x' } },
 		-- LSP
-		{
-			'gd',
-			function() Snacks.picker.lsp_definitions() end,
-			desc = 'Goto Definition',
-		},
-		{
-			'gD',
-			function() Snacks.picker.lsp_declarations() end,
-			desc = 'Goto Declaration',
-		},
-		{
-			'grr',
-			function() Snacks.picker.lsp_references() end,
-			nowait = true,
-			desc = 'References',
-		},
-		{
-			'gI',
-			function() Snacks.picker.lsp_implementations() end,
-			desc = 'Goto Implementation',
-		},
-		{
-			'gy',
-			function() Snacks.picker.lsp_type_definitions() end,
-			desc = 'Goto T[y]pe Definition',
-		},
-		{
-			'<leader>ss',
-			function() Snacks.picker.lsp_symbols() end,
-			desc = 'LSP Symbols',
-		},
-		{
-			'<leader>sS',
-			function() Snacks.picker.lsp_workspace_symbols() end,
-			desc = 'LSP Workspace Symbols',
-		},
+		{ 'gd', function() Snacks.picker.lsp_definitions() end, desc = 'Goto Definition' },
+		{ 'gD', function() Snacks.picker.lsp_declarations() end, desc = 'Goto Declaration' },
+		{ 'grr', function() Snacks.picker.lsp_references() end, nowait = true, desc = 'References' },
+		{ 'gI', function() Snacks.picker.lsp_implementations() end, desc = 'Goto Implementation' },
+		{ 'gy', function() Snacks.picker.lsp_type_definitions() end, desc = 'Goto T[y]pe Definition' },
+		{ '<leader>ss', function() Snacks.picker.lsp_symbols() end, desc = 'LSP Symbols' },
+		{ '<leader>sS', function() Snacks.picker.lsp_workspace_symbols() end, desc = 'LSP Workspace Symbols' },
+		-- Other
+		{ '<leader>gg', function() Snacks.lazygit() end, desc = 'Lazygit' },
 	},
 }
