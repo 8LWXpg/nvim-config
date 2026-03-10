@@ -31,7 +31,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 	end,
 })
 
-vim.lsp.enable({ 'nixd', 'stylua' })
+vim.lsp.enable({ 'nixd', 'gopls' })
 
 return {
 	{
