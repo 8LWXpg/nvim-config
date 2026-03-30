@@ -76,18 +76,6 @@ vim.api.nvim_create_autocmd('BufWritePre', {
 	desc = 'Convert CRLF to LF on save',
 })
 
--- Retrieve cursor style after leave
-vim.api.nvim_create_autocmd('VimLeave', {
-	pattern = '*',
-	callback = function()
-		vim.opt.guicursor = ''
-		pcall(function()
-			io.stdout:write('\x1b[0 q')
-			io.stdout:flush()
-		end)
-	end,
-})
-
 -- Store cwd path
 vim.api.nvim_create_autocmd('VimLeave', {
 	callback = function()
@@ -104,13 +92,18 @@ vim.api.nvim_create_autocmd('VimLeave', {
 
 -- PowerShell settings on Windows
 if vim.fn.has('win32') ~= 0 then
-	vim.opt.shell = 'pwsh.exe'
-	vim.o.shellcmdflag =
-		"-nop -c [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new();$PSDefaultParameterValues['Out-File:Encoding']='utf8';$PSStyle.OutputRendering='plaintext';Remove-Alias -Force -ErrorAction SilentlyContinue tee;"
-	vim.o.shellredir = '2>&1 | Join-String -Separator "`n" | Out-File -NoNewline %s; exit $LastExitCode'
-	vim.o.shellpipe = '2>&1 | Join-String -Separator "`n" | tee.exe %s; exit $LastExitCode'
-	vim.o.shellquote = ''
-	vim.o.shellxquote = ''
+	vim.opt.shelltemp = false
+	vim.opt.shell = 'pwsh'
+	vim.opt.shellcmdflag = table.concat({
+		'-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command ',
+		'[Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new();',
+		"$PSDefaultParameterValues['Out-File:Encoding']='utf8';",
+		"$PSStyle.OutputRendering='PlainText';",
+	})
+	vim.opt.shellpipe = '> %s 2>&1'
+	vim.opt.shellquote = ''
+	vim.opt.shellxquote = ''
+	vim.env.__SuppressAnsiEscapeSequences = '1'
 end
 
 -- Force OSC52 on remote
