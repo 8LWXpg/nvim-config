@@ -126,6 +126,10 @@ if vim.env.SSH_TTY ~= nil then
 	}
 end
 
+-- Standard plugins
+vim.cmd('packadd nohlsearch')
+vim.cmd('packadd nvim.undotree')
+
 -- This have to set before loading lazy
 require('config.lazy')
 require('keymaps')
