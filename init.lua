@@ -1,5 +1,6 @@
 -- Experimental Lua module loader
 vim.loader.enable()
+require('vim._core.ui2').enable({})
 
 vim.o.showmatch = true -- Show matching
 vim.o.ignorecase = true -- Case insensitive
@@ -16,6 +17,7 @@ vim.o.fileformats = 'unix,dos'
 vim.o.winborder = 'rounded'
 vim.o.sidescroll = 4
 vim.o.splitright = true -- Create split from right
+vim.o.pumborder = 'rounded'
 
 vim.opt.whichwrap:append('<>hl')
 vim.opt.fillchars:append({ diff = '╱', foldopen = '', foldclose = '' })

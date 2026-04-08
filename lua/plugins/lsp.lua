@@ -1,5 +1,9 @@
 vim.opt.signcolumn = 'number'
 vim.diagnostic.config({ virtual_text = true })
+vim.lsp.codelens.enable()
+vim.lsp.linked_editing_range.enable()
+vim.lsp.inlay_hint.enable()
+vim.lsp.enable({ 'nixd', 'gopls' })
 
 local buffer_autoformat = function(bufnr)
 	local group = 'lsp_autoformat'
@@ -71,8 +75,6 @@ vim.api.nvim_create_autocmd('LspProgress', {
 		})
 	end,
 })
-
-vim.lsp.enable({ 'nixd', 'gopls' })
 
 return {
 	{
