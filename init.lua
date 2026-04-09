@@ -62,7 +62,7 @@ vim.diagnostic.config({
 -- Show a message when the file is changed on disk and reloaded
 vim.api.nvim_create_autocmd('FileChangedShellPost', {
 	pattern = '*',
-	callback = function() vim.cmd('echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None') end,
+	callback = function(ev) vim.notify('File changed on disk, buffer reloaded', 'info', { title = ev.file }) end,
 })
 
 -- Convert CRLF to LF on save
