@@ -21,6 +21,12 @@ return {
 			enforce_regular_tabs = true,
 			right_mouse_command = 'lua Snacks.bufdelete.other()',
 			middle_mouse_command = 'lua Snacks.bufdelete.delete(%d)',
+			indicator = {
+				icon = '',
+				style = 'none',
+			},
+			hover = { enabled = false },
+			separator_style = { '|', '|' },
 		},
 	},
 	keys = {
