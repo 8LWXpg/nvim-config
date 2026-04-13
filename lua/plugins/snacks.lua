@@ -62,12 +62,15 @@ return {
 		{ '<leader>/', function() Snacks.picker.grep() end, desc = 'Grep' },
 		{ '<leader>:', function() Snacks.picker.command_history() end, desc = 'Command History' },
 		{ '<leader>e', function() Snacks.explorer() end, desc = 'File Explorer' },
-
+		-- Find
 		{ '<leader>ff', function() Snacks.picker.files() end, desc = 'Find files' },
 		{ '<leader>fp', function() Snacks.picker.projects() end, desc = 'Projects' },
 
+		-- Search
 		{ '<leader>sk', function() Snacks.picker.keymaps() end, desc = 'Keymaps' },
 		{ '<leader>sw', function() Snacks.picker.grep_word() end, desc = 'Visual selection or word', mode = { 'n', 'x' } },
+		{ '<leader>sd', function() Snacks.picker.diagnostics() end, desc = 'Diagnostics' },
+		{ '<leader>sD', function() Snacks.picker.diagnostics_buffer() end, desc = 'Buffer Diagnostics' },
 		-- LSP
 		{ 'gd', function() Snacks.picker.lsp_definitions() end, desc = 'Goto Definition' },
 		{ 'gD', function() Snacks.picker.lsp_declarations() end, desc = 'Goto Declaration' },
