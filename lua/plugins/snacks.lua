@@ -1,3 +1,5 @@
+vim.api.nvim_create_user_command('Bx', function() Snacks.bufdelete.delete() end, {})
+
 return {
 	'folke/snacks.nvim',
 	priority = 1000,
