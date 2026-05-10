@@ -14,7 +14,7 @@ return {
 		},
 		---@type CopilotChat.config
 		opts = {
-			model = 'gpt-5.3-codex',
+			model = 'gpt-5.2-codex',
 			window = {
 				width = 0.4,
 			},
