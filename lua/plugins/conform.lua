@@ -12,7 +12,9 @@ return {
 				-- Add your preferred arguments here
 				args = {
 					'$FILENAME',
-					'--omit=abstract',
+					'--v2',
+					'-m',
+					'--omit=abstract,keywords',
 					'--curly',
 					'--numeric',
 					'--space=2',
