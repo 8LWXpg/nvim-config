@@ -106,15 +106,18 @@ return {
 		version = '1.*',
 		event = { 'InsertEnter', 'CmdlineEnter' },
 		dependencies = {
-			'nvim-mini/mini.snippets',
-			version = '*',
-			dependencies = 'rafamadriz/friendly-snippets',
-			opts = function()
-				return {
-					snippets = { require('mini.snippets').gen_loader.from_lang() },
-					mappings = { expand = '' },
-				}
-			end,
+			{
+				'nvim-mini/mini.snippets',
+				version = '*',
+				dependencies = 'rafamadriz/friendly-snippets',
+				opts = function()
+					return {
+						snippets = { require('mini.snippets').gen_loader.from_lang() },
+						mappings = { expand = '' },
+					}
+				end,
+			},
+			'pxwg/blink-cmp-copilot-chat',
 		},
 		---@type blink.cmp.Config
 		opts = {
@@ -132,7 +135,16 @@ return {
 			},
 			sources = {
 				default = { 'snippets', 'lsp', 'path', 'buffer' },
-				providers = { lsp = { min_keyword_length = 0 } },
+				per_filetype = {
+					['copilot-chat'] = { 'copilot_c' },
+				},
+				providers = {
+					lsp = { min_keyword_length = 0 },
+					copilot_c = {
+						name = 'CopilotChat',
+						module = 'blink-cmp-copilot-chat',
+					},
+				},
 			},
 		},
 	},
