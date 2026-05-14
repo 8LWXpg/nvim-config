@@ -58,7 +58,8 @@ return {
 		words = { enabled = true },
 	},
 	keys = {
-		{ '<C-/>', function() Snacks.terminal() end, desc = 'Open Terminal' },
+		{ '<C-/>', function() Snacks.terminal() end, desc = 'Toggle Terminal' },
+		{ '<C-S-/>', function() Snacks.terminal.open() end, desc = 'Open Terminal' },
 
 		{ '<leader>,', function() Snacks.picker.buffers() end, desc = 'Buffers' },
 		{ '<leader>/', function() Snacks.picker.grep() end, desc = 'Grep' },
