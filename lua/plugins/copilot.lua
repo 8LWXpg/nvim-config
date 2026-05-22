@@ -16,7 +16,6 @@ return {
 		---@type CopilotChat.config
 		opts = {
 			chat_autocomplete = false,
-			model = 'gpt-5.2-codex',
 			window = {
 				width = 0.4,
 			},
