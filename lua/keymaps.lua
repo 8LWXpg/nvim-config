@@ -9,7 +9,7 @@ keyset('n', '<F2>', vim.lsp.buf.rename, { desc = 'LSP Rename' })
 keyset('n', 'gl', vim.diagnostic.open_float, { desc = 'Show Diagnostics' })
 
 -- Incremental selection treesitter/lsp
-keyset({ 'n', 'x', 'o' }, '<A-o>', function()
+keyset({ 'n', 'x', 'o' }, '<C-n>', function()
 	if vim.treesitter.get_parser(nil, nil, { error = false }) then
 		require('vim.treesitter._select').select_parent(vim.v.count1)
 	else
@@ -17,7 +17,7 @@ keyset({ 'n', 'x', 'o' }, '<A-o>', function()
 	end
 end, { desc = 'Select parent treesitter node or outer incremental lsp selections' })
 
-keyset({ 'n', 'x', 'o' }, '<A-u>', function()
+keyset({ 'n', 'x', 'o' }, '<C-p>', function()
 	if vim.treesitter.get_parser(nil, nil, { error = false }) then
 		require('vim.treesitter._select').select_child(vim.v.count1)
 	else
