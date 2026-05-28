@@ -15,7 +15,7 @@ keyset({ 'n', 'x', 'o' }, '<C-n>', function()
 	else
 		vim.lsp.buf.selection_range(vim.v.count1)
 	end
-end, { desc = 'Select parent treesitter node or outer incremental lsp selections' })
+end, { desc = 'Expand selection' })
 
 keyset({ 'n', 'x', 'o' }, '<C-p>', function()
 	if vim.treesitter.get_parser(nil, nil, { error = false }) then
@@ -23,4 +23,4 @@ keyset({ 'n', 'x', 'o' }, '<C-p>', function()
 	else
 		vim.lsp.buf.selection_range(-vim.v.count1)
 	end
-end, { desc = 'Select child treesitter node or inner incremental lsp selections' })
+end, { desc = 'Shrink selection' })
