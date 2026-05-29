@@ -10,17 +10,17 @@ keyset('n', 'gl', vim.diagnostic.open_float, { desc = 'Show Diagnostics' })
 
 -- Incremental selection treesitter/lsp
 keyset({ 'n', 'x', 'o' }, '<C-n>', function()
-	if vim.treesitter.get_parser(nil, nil, { error = false }) then
-		require('vim.treesitter._select').select_parent(vim.v.count1)
-	else
+	if #vim.lsp.get_clients({ bufnr = 0 }) > 0 then
 		vim.lsp.buf.selection_range(vim.v.count1)
+	elseif vim.treesitter.get_parser(nil, nil, { error = false }) then
+		require('vim.treesitter._select').select_parent(vim.v.count1)
 	end
 end, { desc = 'Expand selection' })
 
 keyset({ 'n', 'x', 'o' }, '<C-p>', function()
-	if vim.treesitter.get_parser(nil, nil, { error = false }) then
-		require('vim.treesitter._select').select_child(vim.v.count1)
-	else
+	if #vim.lsp.get_clients({ bufnr = 0 }) > 0 then
 		vim.lsp.buf.selection_range(-vim.v.count1)
+	elseif vim.treesitter.get_parser(nil, nil, { error = false }) then
+		require('vim.treesitter._select').select_child(vim.v.count1)
 	end
 end, { desc = 'Shrink selection' })
