@@ -30,11 +30,12 @@ vim.wo.cursorline = true -- highlight current line
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
--- Folding
+-- #region folding
 vim.o.foldcolumn = '0'
 vim.o.foldlevel = 99
 vim.o.foldlevelstart = 99
 vim.o.foldmethod = 'expr'
+vim.opt.foldmarker = '#region,#endregion'
 -- Default to Tree-sitter folding
 vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 -- Prefer LSP folding if client supports it
@@ -47,6 +48,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		end
 	end,
 })
+-- #endregion
 
 vim.diagnostic.config({
 	signs = {
@@ -108,7 +110,7 @@ if vim.fn.has('win32') ~= 0 then
 	vim.env.__SuppressAnsiEscapeSequences = '1'
 end
 
--- Force OSC52 on remote
+-- Disable OSC52 paste on remote
 if vim.env.SSH_TTY ~= nil then
 	local function vim_paste()
 		local content = vim.fn.getreg('"')
@@ -130,7 +132,10 @@ end
 
 -- Standard plugins
 vim.cmd('packadd nohlsearch')
-vim.cmd('packadd nvim.undotree')
+vim.api.nvim_create_autocmd('VimEnter', {
+	once = true,
+	callback = function() vim.cmd('packadd nvim.undotree') end,
+})
 
 -- This have to set before loading lazy
 require('config.lazy')
