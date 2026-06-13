@@ -24,3 +24,8 @@ keyset({ 'n', 'x', 'o' }, '<C-p>', function()
 		require('vim.treesitter._select').select_child(vim.v.count1)
 	end
 end, { desc = 'Shrink selection' })
+
+_G.enable_wrap_keys = function(buf)
+	keyset({ 'n', 'v' }, 'j', 'gj', { buffer = buf })
+	keyset({ 'n', 'v' }, 'k', 'gk', { buffer = buf })
+end

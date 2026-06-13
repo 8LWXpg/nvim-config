@@ -137,6 +137,5 @@ vim.api.nvim_create_autocmd('VimEnter', {
 	callback = function() vim.cmd('packadd nvim.undotree') end,
 })
 
--- This have to set before loading lazy
-require('config.lazy')
 require('keymaps')
+require('config.lazy')
