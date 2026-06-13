@@ -1,23 +1,18 @@
-vim.g.no_plugin_maps = true
+-- vim.g.no_plugin_maps = true
 
 return {
 	'nvim-treesitter/nvim-treesitter-textobjects',
 	branch = 'main',
-	dependencies = 'nvim-treesitter/nvim-treesitter',
 	keys = {
 		{
 			'af',
-			function()
-				require('nvim-treesitter-textobjects.select').select_textobject('@function.outer', 'textobjects')
-			end,
+			function() require('nvim-treesitter-textobjects.select').select_textobject('@function.outer', 'textobjects') end,
 			mode = { 'x', 'o' },
 			desc = 'around function',
 		},
 		{
 			'if',
-			function()
-				require('nvim-treesitter-textobjects.select').select_textobject('@function.inner', 'textobjects')
-			end,
+			function() require('nvim-treesitter-textobjects.select').select_textobject('@function.inner', 'textobjects') end,
 			mode = { 'x', 'o' },
 			desc = 'inner function',
 		},
@@ -47,9 +42,7 @@ return {
 		},
 		{
 			'[m',
-			function()
-				require('nvim-treesitter-textobjects.move').goto_previous_start('@function.outer', 'textobjects')
-			end,
+			function() require('nvim-treesitter-textobjects.move').goto_previous_start('@function.outer', 'textobjects') end,
 			mode = { 'n', 'x', 'o' },
 			desc = 'Previous function start',
 		},

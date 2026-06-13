@@ -9,6 +9,7 @@ return {
 		explorer = {
 			width = 30,
 			initial_focus = 'modified',
+			file_filter = { ignore = { '*.pdf', '*lock*', '*.png' } },
 		},
 	},
 }

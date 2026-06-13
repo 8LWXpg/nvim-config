@@ -16,11 +16,16 @@ local buffer_autoformat = function(bufnr)
 		desc = 'LSP format on save',
 		callback = function()
 			-- note: do not enable async formatting
-			vim.lsp.buf.format({ async = false, timeout_ms = 10000 })
+			vim.lsp.buf.format({
+				async = false,
+				timeout_ms = 10000,
+				filter = function(client) return client.name ~= 'emmylua_ls' end,
+			})
 		end,
 	})
 end
 
+-- Workaround for dynamic capabilities
 vim.api.nvim_create_autocmd('LspAttach', {
 	callback = function(event)
 		local id = vim.tbl_get(event, 'data', 'client_id')
@@ -36,10 +41,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 -- From [snacks.nvim/docs/notifier.md](https://github.com/folke/snacks.nvim/blob/main/docs/notifier.md#-examples)
----@type table<number, {token:lsp.ProgressToken, msg:string, done:boolean}[]>
+---@type table<number, { token: lsp.ProgressToken, msg: string, done: boolean } []>
 local progress = vim.defaulttable()
 vim.api.nvim_create_autocmd('LspProgress', {
-	---@param ev {data: {client_id: integer, params: lsp.ProgressParams}}
+	---@param ev { data: { client_id: integer, params: lsp.ProgressParams } }
 	---@diagnostic disable-next-line: assign-type-mismatch
 	callback = function(ev)
 		local client = vim.lsp.get_client_by_id(ev.data.client_id)
@@ -83,11 +88,7 @@ return {
 		event = { 'BufReadPre', 'BufNewFile' },
 		dependencies = {
 			'mason-org/mason.nvim',
-			{
-				'neovim/nvim-lspconfig',
-				version = '2.*',
-				event = { 'BufReadPre', 'BufNewFile' },
-			},
+			'neovim/nvim-lspconfig',
 		},
 		opts = {},
 	},
@@ -113,7 +114,9 @@ return {
 				opts = function()
 					return {
 						snippets = { require('mini.snippets').gen_loader.from_lang() },
-						mappings = { expand = '' },
+						mappings = {
+							expand = '',
+						},
 					}
 				end,
 			},
@@ -154,11 +157,7 @@ return {
 			backend = 'delta',
 			picker = {
 				'buffer',
-				opts = {
-					keymaps = {
-						close = { 'q', '<Esc>' },
-					},
-				},
+				opts = { keymaps = { close = { 'q', '<Esc>' } } },
 			},
 		},
 		keys = {

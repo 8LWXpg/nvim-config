@@ -40,15 +40,12 @@ return {
 		picker = {
 			enabled = true,
 			sources = {
-				explorer = {
-					watch = false,
-				},
+				files = { exclude = { '*.pdf' } },
+				grep = { exclude = { '*.pdf' } },
+				grep_word = { exclude = { '*.pdf' } },
+				grep_buffer = { exclude = { '*.pdf' } },
 			},
-			formatters = {
-				file = {
-					min_width = 30,
-				},
-			},
+			formatters = { file = { min_width = 30 } },
 		},
 		notifier = { enabled = true },
 		quickfile = { enabled = true },

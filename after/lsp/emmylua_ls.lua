@@ -1,6 +1,6 @@
 return {
 	settings = {
-		Lua = {
+		emmylua = {
 			diagnostics = {
 				disable = { 'missing-fields' },
 			},
