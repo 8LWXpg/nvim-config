@@ -1,5 +1,6 @@
 return {
 	'romus204/tree-sitter-manager.nvim',
+	enabled = false,
 	main = 'tree-sitter-manager',
 	event = { 'BufReadPost', 'BufNewFile' },
 	opts = {
