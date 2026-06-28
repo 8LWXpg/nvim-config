@@ -113,7 +113,13 @@ return {
 				dependencies = 'rafamadriz/friendly-snippets',
 				opts = function()
 					return {
-						snippets = { require('mini.snippets').gen_loader.from_lang() },
+						snippets = {
+							require('mini.snippets').gen_loader.from_lang({
+								lang_patterns = {
+									ps1 = { 'PowerShell.json' },
+								},
+							}),
+						},
 						mappings = {
 							expand = '',
 						},

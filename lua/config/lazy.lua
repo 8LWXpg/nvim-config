@@ -30,6 +30,6 @@ require('lazy').setup({
 		path = 'E:/lua/nvim',
 	},
 	ui = {
-		border = 'rounded',
+		border = vim.o.winborder,
 	},
 })
