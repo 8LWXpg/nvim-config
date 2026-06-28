@@ -29,7 +29,7 @@
   "slimline.nvim": { "branch": "main", "commit": "6e1387e69e222957ff87e5ddc61470d4e04ac683" },
   "snacks.nvim": { "branch": "main", "commit": "882c996cf28183f4d63640de0b4c02ec886d01f2" },
   "tiny-code-action.nvim": { "branch": "main", "commit": "0d040ed81f7953118b81cd12681fcdfcac069803" },
-  "tree-sitter-manager.nvim": { "branch": "main", "commit": "ae305699da5e97b6cffdd5cc6f6045b1b0bd26ea" },
+  "tree-sitter-manager.nvim": { "branch": "develop", "commit": "67771eeb7aa2fa1d4590888a7228ee4c9b8033f9" },
   "typst-preview.nvim": { "branch": "partial-rendering-default", "commit": "f9146501bfa00e2b7a1876bd78725f534ed30e33" },
   "which-key.nvim": { "branch": "main", "commit": "3aab2147e74890957785941f0c1ad87d0a44c15a" }
 }

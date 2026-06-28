@@ -26,4 +26,10 @@ require('lazy').setup({
 		{ import = 'plugins' },
 	},
 	install = { colorscheme = { 'tokyonight' } },
+	dev = {
+		path = 'E:/lua/nvim',
+	},
+	ui = {
+		border = 'rounded',
+	},
 })
