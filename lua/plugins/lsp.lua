@@ -149,7 +149,10 @@ return {
 			backend = 'delta',
 			picker = {
 				'buffer',
-				opts = { keymaps = { close = { 'q', '<Esc>' } } },
+				opts = {
+					hotkeys = true,
+					keymaps = { close = { 'q', '<Esc>' } },
+				},
 			},
 		},
 		keys = {
