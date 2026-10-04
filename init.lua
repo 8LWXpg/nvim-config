@@ -87,7 +87,7 @@ vim.api.nvim_create_autocmd('VimLeave', {
 		if tmp ~= vim.NIL then
 			local file = io.open(tmp, 'w')
 			if file then
-				file:write(vim.env.PWD)
+				file:write(vim.fn.getcwd())
 				file:close()
 			end
 		end

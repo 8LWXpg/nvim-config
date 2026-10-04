@@ -81,4 +81,7 @@ vim.api.nvim_create_autocmd('LspProgress', {
 	end,
 })
 
+vim.api.nvim_create_user_command('HarperStart', 'lsp enable harper_ls', {})
+vim.api.nvim_create_user_command('HarperStop', 'lsp disable harper_ls', {})
+
 return {}

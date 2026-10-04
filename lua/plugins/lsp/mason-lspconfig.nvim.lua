@@ -6,5 +6,11 @@ return {
 		'mason-org/mason.nvim',
 		'neovim/nvim-lspconfig',
 	},
-	opts = {},
+	opts = {
+		automatic_enable = {
+			exclude = {
+				'harper_ls',
+			},
+		},
+	},
 }

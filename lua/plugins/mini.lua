@@ -1,6 +1,18 @@
--- Some small utility plugins
+vim.api.nvim_create_autocmd('FileType', {
+	callback = function(args)
+		vim.schedule(function()
+			if vim.api.nvim_buf_is_valid(args.buf) and vim.bo[args.buf].buftype == '' then
+				require('guess-indent').set_from_buffer(args.buf, true, true)
+			end
+		end)
+	end,
+})
+
 return {
-	{ 'nmac427/guess-indent.nvim', event = 'BufReadPost', opts = {} },
+	{
+		'nmac427/guess-indent.nvim',
+		opts = { auto_cmd = false },
+	},
 	{
 		'nvim-mini/mini.pairs',
 		version = '*',
