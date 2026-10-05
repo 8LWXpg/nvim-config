@@ -61,11 +61,20 @@ vim.diagnostic.config({
 	},
 })
 
+-- #region autoreload
+vim.o.autoread = true
+vim.api.nvim_create_autocmd({ 'FocusGained', 'BufEnter', 'TermLeave', 'TabClosed' }, {
+	group = vim.api.nvim_create_augroup('AutoReload', { clear = true }),
+	callback = function()
+		if vim.fn.mode() ~= 'c' and vim.fn.getcmdwintype() == '' then vim.cmd('checktime') end
+	end,
+})
+
 -- Show a message when the file is changed on disk and reloaded
 vim.api.nvim_create_autocmd('FileChangedShellPost', {
-	pattern = '*',
-	callback = function(ev) vim.notify('File changed on disk, buffer reloaded', 'info', { title = ev.file }) end,
+	callback = function(ev) vim.notify('Reloaded: ' .. vim.fn.fnamemodify(ev.file, ':~:.'), vim.log.levels.INFO) end,
 })
+-- #endregion
 
 -- Convert CRLF to LF on save
 vim.api.nvim_create_autocmd('BufWritePre', {
